@@ -9,3 +9,13 @@
 header {
   grid-column: 2 / 5;
 }
+
+@media (max-width: 500px) {
+  .Dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  header {
+    grid-column: 1 / 2;
+  }
+}

@@ -18,8 +18,8 @@ function Overview() {
       <p className='stat-small'>invoices due</p>
     </article>
     <article className='overview-stat'>
-      <p className='stat-big'>Tayla</p>
-      <p className='stat-small'>out sick</p>
+      <p className='stat-big'>2</p>
+      <p className='stat-small'>out sick idk</p>
     </article>
     </div>
   </section>

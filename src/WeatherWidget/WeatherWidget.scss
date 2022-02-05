@@ -1,6 +1,7 @@
 .weather-widget {
   border: 1px solid #d3d3d3;
   grid-column: 2 / 4;
+  width: 100%;
   display: flex;
   flex-direction: column;
   background: #FFFFFF;
@@ -38,17 +39,29 @@
   .hourly-weather-container {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: stretch;
     width: 100%;
  
     .hourly-weather {
-      width: 12%;
-      margin: .5em;
+      width: 10%;
+      min-width: 35px;
+      margin: 1%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: stretch;
+
+      img {
+        width: 100%;
+      }
     }
   }
  }
+
+ @media (max-width: 500px) {
+  .weather-widget {
+    grid-column: 1 / 2;
+  }
+}

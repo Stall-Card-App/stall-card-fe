@@ -14,42 +14,42 @@ function WeatherWidget() {
     </div>
     <div className='hourly-weather-container'>
       <article className='hourly-weather'>
-        <p>9:00am</p>
+        <p>9AM</p>
         <img src={cloudy} />
         <p>77°</p>
       </article>
       <article className='hourly-weather'>
-        <p>10:00am</p>
+        <p>10AM</p>
         <img src={cloudy} />
         <p>77°</p>
       </article>
       <article className='hourly-weather'>
-        <p>11:00am</p>
+        <p>11AM</p>
         <img src={cloudy} />
         <p>77°</p>
       </article>
       <article className='hourly-weather'>
-        <p>12:00pm</p>
+        <p>12PM</p>
         <img src={cloudy} />
         <p>77°</p>
       </article>
       <article className='hourly-weather'>
-        <p>1:00pm</p>
+        <p>1PM</p>
         <img src={cloudy} />
         <p>77°</p>
       </article>
       <article className='hourly-weather'>
-        <p>2:00pm</p>
+        <p>2PM</p>
         <img src={cloudy} />
         <p>77°</p>
       </article>
       <article className='hourly-weather'>
-        <p>3:00pm</p>
+        <p>3PM</p>
         <img src={cloudy} />
         <p>77°</p>
       </article>
       <article className='hourly-weather'>
-        <p>4:00pm</p>
+        <p>4PM</p>
         <img src={cloudy} />
         <p>77°</p>
       </article>
