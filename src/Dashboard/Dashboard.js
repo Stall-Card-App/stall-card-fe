@@ -2,18 +2,17 @@ import Sidebar from '../Sidebar/Sidebar';
 import './Dashboard.scss';
 import Schedule from '../Schedule/Schedule';
 import WeatherWidget from '../WeatherWidget/WeatherWidget';
+import Overview from '../Overview/Overview';
 
 function Dashboard() {
   return (
     <>
-      <Sidebar />
       <main className='Dashboard'>
+        <Sidebar className='flop' />
         <header>Header here</header>
         <WeatherWidget />
         <Schedule />
-        <section className='horse-overview'>
-          <h3>Today's Weather</h3>
-        </section>
+        <Overview />
       </main>
     </>
   );
