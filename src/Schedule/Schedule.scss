@@ -1,0 +1,30 @@
+.schedule {
+  border: 2px solid blue;
+  grid-column: 3 / 4;
+  grid-row: 2 / 4;
+  display: flex;
+  flex-direction: column;
+  
+  h3 {
+    text-align: center;
+  }
+
+  table {
+    border-collapse: collapse;
+    margin: .5em;
+
+    tr:nth-child(even) {
+      background-color: #e6e4e4;
+    }
+
+    tr:hover {
+      background-color: rgb(196, 193, 193);
+    }
+
+  table, tr, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  }
+}
