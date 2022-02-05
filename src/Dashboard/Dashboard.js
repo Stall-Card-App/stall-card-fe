@@ -1,7 +1,7 @@
 import Sidebar from '../Sidebar/Sidebar';
-import cloudy from '../assets/cloudy.svg';
 import './Dashboard.scss';
 import Schedule from '../Schedule/Schedule';
+import WeatherWidget from '../WeatherWidget/WeatherWidget';
 
 function Dashboard() {
   return (
@@ -9,14 +9,10 @@ function Dashboard() {
       <Sidebar />
       <main className='Dashboard'>
         <header>Header here</header>
-        <section className='weather-widget'>
-          <h3>Today's Weather</h3>
-          <img src={cloudy} />
-        </section>
+        <WeatherWidget />
         <Schedule />
         <section className='horse-overview'>
           <h3>Today's Weather</h3>
-          <img src={cloudy} />
         </section>
       </main>
     </>
