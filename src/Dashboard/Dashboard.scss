@@ -8,6 +8,14 @@
 
 header {
   grid-column: 2 / 5;
+
+  button {
+    background-color: #373737;
+    color: white;
+    border: none;
+    padding: .25em 1em;
+    cursor: pointer;
+  }
 }
 
 @media (max-width: 500px) {

@@ -1,0 +1,30 @@
+.modal {
+  display: none;
+  z-index: 2;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: #72717188;
+
+
+  h2 {
+    text-align: center;
+  }
+
+  .modal-exit {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 1%;
+  }
+}
+
+.modal-content {
+  background-color: white;
+  position: relative;
+  margin: 5%;
+}
+
+.modal.is-open {
+  display: block;
+}
