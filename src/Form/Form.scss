@@ -4,12 +4,18 @@
   width: 100vw;
   height: 100vh;
   position: fixed;
+  left: 0;
+  top: 0;
   background-color: #72717188;
 
 
   h2 {
     text-align: center;
   }
+
+  // .modal-header {
+
+  // }
 
   .modal-exit {
     position: absolute;
@@ -22,9 +28,30 @@
 .modal-content {
   background-color: white;
   position: relative;
-  margin: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2%;
+
+  form {
+    padding: .5em 5em;
+    max-width: 100%;
+  }
 }
 
 .modal.is-open {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.submit-button {
+  margin: .5em;
 }
