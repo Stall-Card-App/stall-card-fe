@@ -1,4 +1,4 @@
-{
+data = {
   "data": {
     "horses": [
       {
@@ -6,7 +6,7 @@
         "name": "Bloopy",
         "stall_number": 12,
         "age": 15,
-        "sex": "gelding",
+        "sex": "gelding",
         "breed": "Appaloosa",
         "color": "chestnut",
         "markings": "blaze, left hind sock",
@@ -26,7 +26,7 @@
         "name": "Blippy",
         "stall_number": 14,
         "age": 25,
-        "sex": "mare",
+        "sex": "mare",
         "breed": "Clydesdale",
         "color": "bay",
         "markings": "blaze",
@@ -46,7 +46,7 @@
         "name": "Bleppy",
         "stall_number": 2,
         "age": 5,
-        "sex": "gelding",
+        "sex": "gelding",
         "breed": "Thoroughbred",
         "color": "grey",
         "markings": "none",
@@ -124,3 +124,5 @@
     ]
   }
 }
+
+export default data;
