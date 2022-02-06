@@ -1,6 +1,7 @@
 import './Form.scss';
 import MicroModal from 'micromodal';
 import { useState } from 'react';
+import ContactFormlet from '../ContactFormlet/ContactFormlet';
 
 const initialInputsState = {
   name: '',
@@ -164,40 +165,9 @@ function Form() {
           </header>
           <div id="modal-1-content">
             <form>
-            <div className="input-container">
-                <label htmlFor="owner_id">Owner</label>
-                <select id="owner_id" onChange={(e) => handleInputChange(e)}>
-                  <option disabled selected value> select an option </option>
-                  <option>New owner</option>
-                  <option value="id here">Owner name 1</option>
-                  <option value="another id here">Owner name 2</option>
-                  <option value="id">Owner name 3</option>
-                </select>
-                  <div className="input-container">
-                    <label htmlFor="supplements">supplements</label>
-                    <input id="supplements" type="text" value={inputs.supplements} onChange={(e) => handleInputChange(e)} />
-                  </div>
-                  <div className="input-container">
-                    <label htmlFor="supplements">supplements</label>
-                    <input id="supplements" type="text" value={inputs.supplements} onChange={(e) => handleInputChange(e)} />
-                  </div>
-              </div>
-              <div className="input-container">
-                <label htmlFor="pm_feed">PM Feed</label>
-                <input id="pm_feed" type="text" value={inputs.pm_feed} onChange={(e) => handleInputChange(e)} />
-              </div>
-              <div className="input-container">
-                <label htmlFor="supplements">supplements</label>
-                <input id="supplements" type="text" value={inputs.supplements} onChange={(e) => handleInputChange(e)} />
-              </div>
-              <div className="input-container">
-                <label htmlFor="turnout">Turnout</label>
-                <input id="turnout" type="text" value={inputs.turnout} onChange={(e) => handleInputChange(e)} />
-              </div>
-              <div className="input-container">
-                <label htmlFor="blanketing_temp">Blanketing Temp</label>
-                <input id="blanketing_temp" type="text" value={inputs.blanketing_temp} onChange={(e) => handleInputChange(e)} />
-              </div>
+            <ContactFormlet contactType={"owner"} handleInputChange={handleInputChange}/>
+            <ContactFormlet contactType={"farrier"} handleInputChange={handleInputChange}/>
+            <ContactFormlet contactType={"vet"} handleInputChange={handleInputChange}/>
               <button className='back-button' onClick={(e) => handleBack(e)}>Back</button>
               <button className='submit-button' onClick={(e) => handleSubmit(e)}>Submit</button>
             </form>
