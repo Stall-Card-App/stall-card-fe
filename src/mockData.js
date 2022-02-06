@@ -1,4 +1,4 @@
-data = {
+mockData = {
   "data": {
     "horses": [
       {
@@ -125,4 +125,4 @@ data = {
   }
 }
 
-export default data;
+export default mockData;
