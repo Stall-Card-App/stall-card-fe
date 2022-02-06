@@ -11,10 +11,12 @@ function AllHorses() {
       <Link to={`/horses/${horse.id}`} key={horse.id}>
         <HorseCard 
           id={horse.id}
+          photo={horse.photo}
           name={horse.name}
           stallNumber={horse.stall_number}
           amFeed = {horse.am_feed}
           pmFeed = {horse.pm_feed}
+          turnout = {horse.turnout}
         />
       </Link>
     )

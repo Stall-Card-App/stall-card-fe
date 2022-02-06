@@ -3,6 +3,7 @@ mockData = {
     "horses": [
       {
         "id": 123213,
+        "photo": "../assets/bloopy.jpg",
         "name": "Bloopy",
         "stall_number": 12,
         "age": 15,
@@ -23,6 +24,7 @@ mockData = {
       },
       {
         "id": 123214,
+        "photo": "../assets/blippy.jpg",
         "name": "Blippy",
         "stall_number": 14,
         "age": 25,
@@ -43,6 +45,7 @@ mockData = {
       },
       {
         "id": 123213,
+        "photo": "../assets/bleppy.jpg",
         "name": "Bleppy",
         "stall_number": 2,
         "age": 5,
