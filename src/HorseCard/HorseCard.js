@@ -1,10 +1,10 @@
 import React from "react";
 
 function HorseCard({photo, name, stallNumber, amFeed, pmFeed, turnout}) {
- 
+
   return ( 
     <div>
-      <img src={photo} alt={`Photo of ${name}`} />
+      <img src={`${photo}`} alt={`Photo of ${name}`} />
       <table>
         <tbody>
           <tr>

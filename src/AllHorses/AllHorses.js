@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import mockData from "../mockData";
-import HorseCard from "../HorseCard";
+import HorseCard from "../HorseCard/HorseCard";
 
 function AllHorses() {
   const allHorses = mockData.data.horses;
@@ -23,7 +23,9 @@ function AllHorses() {
   })
 
   return ( 
-    {horses}
+    <div>
+      {horses}
+    </div>
    );
 }
 
