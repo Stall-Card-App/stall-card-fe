@@ -6,4 +6,5 @@ describe('Main dashboard', () => {
   it('Should have a header', () => {
     cy.get('h1').should('contain', 'Dashboard')
   })
+  
 })
