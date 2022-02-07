@@ -14,7 +14,7 @@ function Sidebar() {
             <NavLink to="/"><img src="home.svg" alt="home icon"/>Home</NavLink>
           </li>
           <li>
-            <NavLink to="/"><img src="grid.svg" alt="grid icon"/>All Horses</NavLink>
+            <NavLink to="/horses"><img src="grid.svg" alt="grid icon"/>All Horses</NavLink>
           </li>
           <li>
             <NavLink to="/"><img src="calendar.svg" alt="home icon"/>Schedule</NavLink>
