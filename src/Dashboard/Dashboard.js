@@ -12,12 +12,9 @@ function Dashboard() {
     <>
       <main className='Dashboard'>
         <Form />
-        <Sidebar className='flop' />
-        <header>
-          <button onClick={() => MicroModal.show('modal-1')}>
-            New Horse
+          <button className='new-horse-button' onClick={() => MicroModal.show('modal-1')}>
+            +
           </button>
-        </header>
         <WeatherWidget />
         <Schedule />
         <Overview />

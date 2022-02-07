@@ -1,21 +1,23 @@
 .Dashboard {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 3;
   gap: 1em;
   margin: 0 1em 1em 1em;
 }
 
-header {
-  grid-column: 2 / 5;
-
-  button {
-    background-color: #373737;
-    color: white;
-    border: none;
-    padding: .25em 1em;
-    cursor: pointer;
-  }
+.new-horse-button {
+  color: white;
+  background-color: green;
+  border: none;
+  position: fixed;
+  cursor: pointer;
+  left: 275px;
+  bottom: 0;
+  margin: 1%;
+  border-radius: 5em;
+  padding: 1em;
+  line-height: .6em;
 }
 
 @media (max-width: 500px) {
@@ -23,7 +25,4 @@ header {
     grid-template-columns: 1fr;
   }
 
-  header {
-    grid-column: 1 / 2;
-  }
 }
