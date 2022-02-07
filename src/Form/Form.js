@@ -36,8 +36,6 @@ const initialInputsState = {
   barn_id: null
 }
 
-console.log('mockdata', mockData)
-
 function Form() {
   const [inputs, setInputs] = useState(initialInputsState)
   const [formPage, setFormPage] = useState(1)
