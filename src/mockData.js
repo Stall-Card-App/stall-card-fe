@@ -1,4 +1,4 @@
-{
+const mockData = {
   "data": {
     "horses": [
       {
@@ -124,3 +124,5 @@
     ]
   }
 }
+
+export default mockData;
