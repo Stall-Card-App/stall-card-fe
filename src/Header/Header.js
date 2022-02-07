@@ -3,12 +3,12 @@ import './Header.scss'
 
 function Header() {
     return(
-        <header>
+        <header className='header-container'>
             <h1>Dashboard</h1>
             <p>Welcome, Admin</p>
-            <span>
-                <img />
-                <p>profile</p>
+            <span className='profile-container'>
+                <img src="user.svg" />
+                <p>Profile</p>
             </span>
         </header>
     )
