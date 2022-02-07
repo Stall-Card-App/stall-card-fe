@@ -1,0 +1,22 @@
+version: 2.1
+orbs:
+  cypress: cypress-io/cypress@1
+  react: thefrontside/react@0.1.0
+  heroku: circleci/heroku@0.0.10
+workflows:
+  build:
+    jobs:
+      - cypress/run:
+          start: npm start
+          wait-on: 'http://localhost:3000'
+          filters:
+              branches:
+                only:
+                  - main
+      - heroku/deploy-via-git:
+          requires:
+            - cypress/run
+          filters:
+              branches:
+                only:
+                  - main
