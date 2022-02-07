@@ -5,17 +5,14 @@ import mockData from "../mockData";
 function HorseProfile() {
   const horseId = Number(useParams().id);
   let horse;
-  console.log(horseId)
 
   mockData.data.horses.forEach((singleHorse) => {
     if (singleHorse.id === horseId) {
-      console.log(singleHorse)
       horse = singleHorse;
     }
   })
 
   const owner = mockData.data.owners.find((oneOwner) => {
-    console.log(oneOwner);
     return horse.owner_id === oneOwner.id;
   })
 
@@ -28,6 +25,7 @@ function HorseProfile() {
   })
 
   return ( 
+    <div>
     <section>
       <img src={`${horse.photo}`} alt={`Photo of ${horse.name}`} />
       <h2>{horse.name}</h2>
@@ -87,6 +85,8 @@ function HorseProfile() {
         <h4>Farrier: {farrier.name}</h4>
         <p>Phone: {owner.phone_number}</p>
     </section>
+      <Link to={"/horses"}>Return to All Horses</Link>
+    </div>
     
    );
 }
