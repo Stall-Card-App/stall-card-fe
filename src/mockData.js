@@ -1,12 +1,13 @@
-{
+const mockData = {
   "data": {
     "horses": [
       {
         "id": 123213,
+        "photo": "./assets/bloopy.jpg",
         "name": "Bloopy",
         "stall_number": 12,
         "age": 15,
-        "sex": "gelding",
+        "sex": "gelding",
         "breed": "Appaloosa",
         "color": "chestnut",
         "markings": "blaze, left hind sock",
@@ -23,10 +24,11 @@
       },
       {
         "id": 123214,
+        "photo": "./assets/blippy.jpg",
         "name": "Blippy",
         "stall_number": 14,
         "age": 25,
-        "sex": "mare",
+        "sex": "mare",
         "breed": "Clydesdale",
         "color": "bay",
         "markings": "blaze",
@@ -42,11 +44,12 @@
         "farrier_id": 444442
       },
       {
-        "id": 123213,
+        "id": 123215,
+        "photo": "./assets/bleppy.jpg",
         "name": "Bleppy",
         "stall_number": 2,
         "age": 5,
-        "sex": "gelding",
+        "sex": "gelding",
         "breed": "Thoroughbred",
         "color": "grey",
         "markings": "none",
@@ -124,3 +127,5 @@
     ]
   }
 }
+
+export default mockData;
