@@ -5,13 +5,11 @@ function HorseCard({photo, name, stallNumber, amFeed, pmFeed, turnout}) {
 
   return ( 
     <div className="horse-card">
+      <p>{stallNumber}</p>
       <img src={photo} alt={`Photo of ${name}`} />
+      <p>{name}</p>
       <table>
         <tbody className="horse-info">
-          <tr>
-            <th>{name}</th>
-            <td>{`Stall ${stallNumber}`}</td>
-          </tr>
           <tr>
             <th>AM Feed:</th>
             <td>{amFeed}</td>

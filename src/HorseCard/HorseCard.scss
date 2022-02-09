@@ -3,19 +3,19 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    width: 20em;
-    margin: 5em;
+    width: 22em;
+    padding: 1em;
+
+    img {
+        width: 75%;
+    }   
+
+    p {
+        font-size: 125%;
+    }
 }
 
-// tr {
-//     display: flex;
-//     justify-content: sp;
-// }
 
 .horse-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: space-between;
-    // width: 100%;
+    font-size: 90%;
 }
