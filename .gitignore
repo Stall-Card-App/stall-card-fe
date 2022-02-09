@@ -9,6 +9,7 @@
 /coverage
 /instrumented
 /.nyc_output
+/.instrumented
 
 # production
 /build
