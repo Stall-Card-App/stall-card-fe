@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import mockData from "../mockData";
+import "./HorseProfile.scss";
 
 function HorseProfile() {
   const horseId = Number(useParams().id);
@@ -25,9 +26,9 @@ function HorseProfile() {
   })
 
   return ( 
-    <div>
-    <section>
-      <img src={`${horse.photo}`} alt={`Photo of ${horse.name}`} />
+    <div className="horse-profile">
+    <section className="profile-container">
+      <img className="photo" src={`${horse.photo}`} alt={`Photo of ${horse.name}`} />
       <h2>{horse.name}</h2>
       <table>
         <tbody>
@@ -77,15 +78,14 @@ function HorseProfile() {
           </tr>
         </tbody>
       </table>
-      <h3>Important Contacts:</h3>
-        <h4>Owner: {owner.name}</h4>
-        <p>Phone: {owner.phone_number}</p>
-        <h4>Vet: {vet.name}</h4>
-        <p>Phone: {vet.phone_number}</p>
-        <h4>Farrier: {farrier.name}</h4>
-        <p>Phone: {owner.phone_number}</p>
     </section>
-      <Link to={"/horses"}>Return to All Horses</Link>
+      <div className="all-contacts">
+        <h3>Important Contacts:</h3>
+          <span className="contact"><h4>Owner: {owner.name}</h4><p>Phone: {owner.phone_number}</p></span>
+          <span className="contact"><h4>Vet: {vet.name}</h4><p>Phone: {vet.phone_number}</p></span>
+          <span className="contact"><h4>Farrier: {farrier.name}</h4><p>Phone: {owner.phone_number}</p></span>
+      </div>
+      <Link to={"/horses"}>⬅ Return to All Horses</Link>
     </div>
     
    );

@@ -1,0 +1,16 @@
+@use "../_variables"as v;
+
+.horse-profile {
+    @include v.flexbox(row, flex-start, flex-start);
+    width: 100%;
+}
+
+.profile-container {
+    @include v.flexbox(column, space-between, center);
+    flex-wrap: wrap;
+    width: 100%;
+
+    .photo {
+        width: 15%;
+    }
+}
