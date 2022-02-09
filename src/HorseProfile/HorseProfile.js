@@ -27,8 +27,8 @@ function HorseProfile() {
 
   return ( 
     <div className="horse-profile">
-    <section className="profile-container">
-      <img className="photo" src={`${horse.photo}`} alt={`Photo of ${horse.name}`} />
+      <img className="horse-photo" src={`${horse.photo}`} alt={`Photo of ${horse.name}`} />
+    <section className="horse-details">
       <h2>{horse.name}</h2>
       <table>
         <tbody>
@@ -78,13 +78,38 @@ function HorseProfile() {
           </tr>
         </tbody>
       </table>
-    </section>
       <div className="all-contacts">
         <h3>Important Contacts:</h3>
-          <span className="contact"><h4>Owner: {owner.name}</h4><p>Phone: {owner.phone_number}</p></span>
-          <span className="contact"><h4>Vet: {vet.name}</h4><p>Phone: {vet.phone_number}</p></span>
-          <span className="contact"><h4>Farrier: {farrier.name}</h4><p>Phone: {owner.phone_number}</p></span>
-      </div>
+          <table>
+            <tbody>
+              <tr>
+                <th>Owner:</th>
+                <td>{owner.name}</td>
+              </tr>
+              <tr>
+                <th>Phone:</th>
+                <td>{owner.phone_number}</td>
+              </tr>
+                 <tr>
+                <th>Vet:</th>
+                <td>{vet.name}</td>
+              </tr>
+              <tr>
+                <th>Phone:</th>
+                <td>{vet.phone_number}</td>
+              </tr>
+                 <tr>
+                <th>Farrier:</th>
+                <td>{farrier.name}</td>
+              </tr>
+              <tr>
+                <th>Phone:</th>
+                <td>{farrier.phone_number}</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+    </section>
       <Link to={"/horses"}>⬅ Return to All Horses</Link>
     </div>
     
