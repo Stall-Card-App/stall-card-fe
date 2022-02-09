@@ -3,7 +3,7 @@ const mockData = {
     "horses": [
       {
         "id": 123213,
-        "photo": "./assets/bloopy.jpg",
+        "photo": "https://s3-alpha-sig.figma.com/img/520c/c080/e8417a897a0fa40f213545cee4f768aa?Expires=1645401600&Signature=ZNR~~tu2Gnkr-ZaPaodrjGZkGvWxMBkUUDC4gw4BidDBsEoJqzWqXF2e6915FxhjoubMHDLNf52RcIQUUHCCl3W1mdHTGywRD50oDm7WvxXQF8opEkEvDo~9mv4rLA9Mr6TbLADzrtl9xR1SY0FobqpvZdRZ7P3yokwvMRxIVG-9x1cf6WjtcOwpTkBKU42-9sgIsnQ7MuaTC~H9dvJFZLX1R2dGEsfKhOVaN1zLDND8Q1fZk728PjOzxTElehrCiOtyb1ukx7q-2RP2kZCxmg~RJsg7ynhPrAuNM2JJEOu8crdNuIawuea6eCfdojZmZhleXEyg56S3i0wb2y~q7A__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
         "name": "Bloopy",
         "stall_number": 12,
         "age": 15,
@@ -24,7 +24,7 @@ const mockData = {
       },
       {
         "id": 123214,
-        "photo": "./assets/blippy.jpg",
+        "photo": "https://s3-alpha-sig.figma.com/img/69d3/2ffb/f643fd6b43cb82caee782e7ebf68bf80?Expires=1645401600&Signature=Bn663cbh1ixIbCwmaRmJqd~p4lw8z~zDQWVi8kra1lOsBXpyVCB64QFmRZu~m4u5FUWFWYoK1Y7BxKMlZwlkQrzGh3d8C20GlYWWNV-XRrJ7Fk9KR2x3liGEioRf0ADgD52Q0YQmXg9VgfuOU0SAiUGJ~k4O7QpxRp3JjkkyDrYlOriQ-j4JYf65mO3yt~JFJ1Ngf47SlnZUSUFY6keGXOmscrEw29a1BXxvCMZ1pRoqZJHwLDlezqG15IrgKzfop88pSGNZQcyZtlhISukFD67tQXJ6G-ACtQlG2hOu2MOXIUrsGCz912fkZqjzRi1m4Gdlh~WL~XOIqX1Cr8BuDw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
         "name": "Blippy",
         "stall_number": 14,
         "age": 25,
@@ -45,7 +45,7 @@ const mockData = {
       },
       {
         "id": 123215,
-        "photo": "./assets/bleppy.jpg",
+        "photo": "https://s3-alpha-sig.figma.com/img/21ad/48db/bc688dea5cd2b0b31bdf67a674f3d901?Expires=1645401600&Signature=UaHOgq3kXOg7xnlrlcZh3YwuLTBdmtAmR~SRRmnQC-4utl7f8Wl8~hukXk1PXt6KCoHNkT4mIwcP~52Y~N92eX-jTEvcTguMAx4VFFnM0m2So6bboOGr6ffDbAzxFlIZGR8jgcrsE0SQtdnUjwWyHPLUIlQ-M7zgGM8EPunnlvdHlHDZ8vl6uuo851c-stKqGC0TWmwMhS2RMIeNvtgcpLabLnb8LmTCCgzEPwFxaEZl03gqCaFj-YYf3Gq04Np~SLiO3XYHux6AidkPNbYUebSxjsqEw1yzPRc1QVfT94yaH6uZD7RttPiTmBQuqhvQRkHpBZP9KYiUp2ufnLpyhQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
         "name": "Bleppy",
         "stall_number": 2,
         "age": 5,
