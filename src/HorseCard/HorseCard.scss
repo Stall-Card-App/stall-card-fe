@@ -1,0 +1,21 @@
+.horse-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 20em;
+    margin: 5em;
+}
+
+// tr {
+//     display: flex;
+//     justify-content: sp;
+// }
+
+.horse-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: space-between;
+    // width: 100%;
+}

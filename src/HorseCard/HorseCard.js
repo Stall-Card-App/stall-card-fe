@@ -1,12 +1,13 @@
 import React from "react";
+import "./HorseCard.scss";
 
 function HorseCard({photo, name, stallNumber, amFeed, pmFeed, turnout}) {
 
   return ( 
-    <div>
+    <div className="horse-card">
       <img src={photo} alt={`Photo of ${name}`} />
       <table>
-        <tbody>
+        <tbody className="horse-info">
           <tr>
             <th>{name}</th>
             <td>{`Stall ${stallNumber}`}</td>

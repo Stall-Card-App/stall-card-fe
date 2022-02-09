@@ -1,9 +1,14 @@
 .horse-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 3;
-    gap: 1em;
-    margin: 2em 2em 2em 2em;
+    // display: grid;
+    // grid-template-columns: repeat(4, 1fr);
+    // grid-template-rows: 3;
+    // gap: 1em;
+    // margin: 2em 2em 2em 2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
 
     img {
         width: 14em;
