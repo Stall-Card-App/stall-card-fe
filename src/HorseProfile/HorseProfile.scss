@@ -1,8 +1,13 @@
 @use "../_variables"as v;
 
+.details-page {
+    width: 100%;
+    @include v.flexbox(column, flex-start, center);
+}
 
 .horse-profile {
     @include v.flexbox(row, space-around, center);
+    width: 100%;
 }
 
 .horse-photo {

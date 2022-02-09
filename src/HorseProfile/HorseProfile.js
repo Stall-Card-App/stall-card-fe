@@ -26,6 +26,8 @@ function HorseProfile() {
   })
 
   return ( 
+    <section className="details-page">
+
     <div className="horse-profile">
       <img className="horse-photo" src={`${horse.photo}`} alt={`Photo of ${horse.name}`} />
     <section className="horse-details">
@@ -112,8 +114,9 @@ function HorseProfile() {
           </div>
         </div>
     </section>
-      <Link to={"/horses"}>⬅ Return to All Horses</Link>
     </div>
+    <Link to={"/horses"}>⬅ Return to All Horses</Link>
+    </section>
     
    );
 }
