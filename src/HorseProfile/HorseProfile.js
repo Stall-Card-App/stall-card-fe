@@ -30,6 +30,7 @@ function HorseProfile() {
       <img className="horse-photo" src={`${horse.photo}`} alt={`Photo of ${horse.name}`} />
     <section className="horse-details">
       <h2>{horse.name}</h2>
+      <div className="info-tables">
       <table>
         <tbody>
            <tr>
@@ -109,6 +110,7 @@ function HorseProfile() {
             </tbody>
           </table>
           </div>
+        </div>
     </section>
       <Link to={"/horses"}>⬅ Return to All Horses</Link>
     </div>
