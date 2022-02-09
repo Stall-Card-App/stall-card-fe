@@ -1,8 +1,7 @@
+@use "../_variables"as v;
+
 .horse-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+    @include v.flexbox(column, flex-start, center);
     width: 22em;
     padding: 1em;
 
