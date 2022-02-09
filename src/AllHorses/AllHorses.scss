@@ -1,0 +1,16 @@
+.horse-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 3;
+    gap: 1em;
+    margin: 2em 2em 2em 2em;
+
+    img {
+        width: 14em;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+}
