@@ -1,4 +1,5 @@
 import React from "react";
+import "./AllHorses.scss";
 import { Link } from 'react-router-dom';
 import mockData from "../mockData";
 import HorseCard from "../HorseCard/HorseCard";
@@ -28,7 +29,7 @@ function AllHorses() {
   })
 
   return ( 
-    <div>
+    <div className="horse-grid">
       {horses}
     </div>
    );

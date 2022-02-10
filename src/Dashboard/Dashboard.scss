@@ -1,3 +1,5 @@
+@use "../_variables"as v;
+
 .Dashboard {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -8,7 +10,7 @@
 
 .new-horse-button {
   color: white;
-  background-color: green;
+  background-color: v.$grayGreen;
   border: none;
   position: fixed;
   cursor: pointer;

@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import mockData from "../mockData";
+import "./HorseProfile.scss";
 
 function HorseProfile() {
   const horseId = Number(useParams().id);
@@ -25,10 +26,12 @@ function HorseProfile() {
   })
 
   return ( 
-    <div>
-    <section>
-      <img src={`${horse.photo}`} alt={`Photo of ${horse.name}`} />
+    <section className="details-page">
+    <div className="horse-profile">
+      <img className="horse-photo" src={`${horse.photo}`} alt={`Photo of ${horse.name}`} />
+    <section className="horse-details">
       <h2>{horse.name}</h2>
+      <div className="info-tables">
       <table>
         <tbody>
            <tr>
@@ -77,16 +80,42 @@ function HorseProfile() {
           </tr>
         </tbody>
       </table>
-      <h3>Important Contacts:</h3>
-        <h4>Owner: {owner.name}</h4>
-        <p>Phone: {owner.phone_number}</p>
-        <h4>Vet: {vet.name}</h4>
-        <p>Phone: {vet.phone_number}</p>
-        <h4>Farrier: {farrier.name}</h4>
-        <p>Phone: {owner.phone_number}</p>
+      <div className="all-contacts">
+        <h3>Important Contacts:</h3>
+          <table>
+            <tbody>
+              <tr>
+                <th>Owner:</th>
+                <td>{owner.name}</td>
+              </tr>
+              <tr>
+                <th>Phone:</th>
+                <td>{owner.phone_number}</td>
+              </tr>
+                 <tr>
+                <th>Vet:</th>
+                <td>{vet.name}</td>
+              </tr>
+              <tr>
+                <th>Phone:</th>
+                <td>{vet.phone_number}</td>
+              </tr>
+                 <tr>
+                <th>Farrier:</th>
+                <td>{farrier.name}</td>
+              </tr>
+              <tr>
+                <th>Phone:</th>
+                <td>{farrier.phone_number}</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
     </section>
-      <Link to={"/horses"}>Return to All Horses</Link>
     </div>
+    <Link to={"/horses"} className="back-button">⬅ Return to All Horses</Link>
+    </section>
     
    );
 }
