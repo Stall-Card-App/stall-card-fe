@@ -2,13 +2,8 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import mockData from "../mockData";
 import HorseCard from "../HorseCard/HorseCard";
-import { dummyQuery, fetchAllHorses } from '../graphqlQueries.js'
-import { useQuery } from '@apollo/client';
 
 function AllHorses() {
-  const { data } = useQuery(fetchAllHorses)
-  console.log(data)
-
   const allHorses = mockData.data.horses;
 
   const horses = allHorses.map((horse) => {
