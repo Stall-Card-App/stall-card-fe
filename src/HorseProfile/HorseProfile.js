@@ -15,13 +15,6 @@ function HorseProfile() {
     onCompleted: data => {
       setHorse(() => data.fetchHorse)
       console.log(horse)
-    },
-    errorPolicy: 'ignore'
-  })
-
-  mockData.data.horses.forEach((singleHorse) => {
-    if (singleHorse.id === horseId) {
-      mock = singleHorse;
     }
   })
 
@@ -40,7 +33,7 @@ function HorseProfile() {
   return ( 
     <section className="details-page">
     {horse && <div className="horse-profile">
-      <img className="horse-photo" src={`${mock.photo}`} alt={`Photo of ${horse.name}`} />
+      <img className="horse-photo" src={`${mockData.data.horses[1].photo}`} alt={`Photo of ${horse.name}`} />
     <section className="horse-details">
       <h2>{horse.name}</h2>
       <div className="info-tables">
