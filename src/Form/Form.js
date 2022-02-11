@@ -170,17 +170,6 @@ function Form() {
                   size="small"
                 />
               </div>
-              {/* <div className="input-container">
-                <TextField
-                  label="Other Notes"
-                  id="Notes"
-                  value={inputs.notes}
-                  onChange={(e) => handleInputChange(e)}
-                  multiline
-                  rows={4}
-                  size="small"
-                />
-              </div> */}
               <button className='next-button' onClick={(e) => handleNext(e)}>Next</button>
             </form>
           </div>
@@ -236,6 +225,17 @@ function Form() {
                   id="blanketingTemp"
                   value={inputs.blanketing_temp}
                   onChange={(e) => handleInputChange(e)}
+                  size="small"
+                />
+              </div>
+              <div className="input-container">
+                <TextField
+                  label="Other Notes"
+                  id="Notes"
+                  value={inputs.notes}
+                  onChange={(e) => handleInputChange(e)}
+                  multiline
+                  rows={4}
                   size="small"
                 />
               </div>
