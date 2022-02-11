@@ -12,10 +12,7 @@ function AllHorses() {
   const { data } = useQuery(fetchAllHorses, {
     onCompleted: data => {
       setAllHorses(() => data.fetchHorses)
-      console.log(data.fetchHorses)
     }})
-
-  // const allHorses = mockData.data.horses;
 
   return (
     <div className="horse-grid">

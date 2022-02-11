@@ -1,4 +1,4 @@
-import { useQuery, gql } from '@apollo/client';
+import { gql } from '@apollo/client';
 
 const dummyQuery = gql`{
   user(id: 1) {
@@ -82,6 +82,34 @@ mutation AddHorse($input: AddHorseInput!) {
 }
 `
 
+const fetchVet = gql`
+query FetchVet($id: ID!) {
+  fetchVet(id: $id) {
+    id
+    name
+    phoneNumber
+  }
+}
+`
 
+const fetchFarrier = gql`
+query FetchFarrier($id: ID!) {
+  fetchFarrier(id: $id) {
+    id
+    name
+    phoneNumber
+  }
+}
+`
 
-export {dummyQuery, fetchAllHorses, fetchHorse, addHorseQuery};
+const fetchOwner = gql`
+query FetchOwner($id: ID!) {
+  fetchOwner(id: $id) {
+    id
+    name
+    phoneNumber
+  }
+}
+`
+
+export {dummyQuery, fetchAllHorses, fetchHorse, addHorseQuery, fetchVet, fetchFarrier, fetchOwner};
