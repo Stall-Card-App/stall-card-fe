@@ -3,6 +3,10 @@ import MicroModal from 'micromodal';
 import { useState } from 'react';
 import ContactFormlet from '../ContactFormlet/ContactFormlet';
 import mockData from "../mockData";
+import TextField from '@mui/material/TextField';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
 
 const initialInputsState = {
   name: '',
@@ -81,44 +85,102 @@ function Form() {
         {formPage === 1 && <div className='modal-content' role="dialog" aria-modal="true" aria-labelledby="modal-1-title" >
           <header className='modal-header'>
             <h2 id="modal-1-title">
-              Horse Info
+              Add Horse Info
             </h2>
             <button className='modal-exit' aria-label="Close modal" data-micromodal-close>x</button>
           </header>
           <div id="modal-1-content">
             <form>
               <div className="input-container">
-                <label htmlFor="name">Name</label>
-                <input id="name" type="text" value={inputs.name} onChange={(e) => handleInputChange(e)} />
+                <TextField
+                  label="Name"
+                  id="name"
+                  value={inputs.name}
+                  onChange={(e) => handleInputChange(e)}
+                  size="small"
+                />
               </div>
               <div className="input-container">
-                <label htmlFor="stall_number">Stall Number</label>
-                <input id="stall_number" type="number" value={inputs.stall_number} onChange={(e) => handleInputChange(e)} />
+                <TextField
+                  label="Stall #"
+                  id="stallNumber"
+                  value={inputs.stall_number}
+                  onChange={(e) => handleInputChange(e)}
+                  size="small"
+                />
               </div>
               <div className="input-container">
-                <label htmlFor="age">Age</label>
-                <input id="age" type="number" value={inputs.age} onChange={(e) => handleInputChange(e)} />
+                <TextField
+                    label="Age"
+                    id="age"
+                    value={inputs.age}
+                    onChange={(e) => handleInputChange(e)}
+                    size="small"
+                />
               </div>
               <div className="input-container">
-                <label htmlFor="breed">Breed</label>
-                <input id="breed" type="text" value={inputs.breed} onChange={(e) => handleInputChange(e)} />
+                <TextField
+                  label="Breed"
+                  id="breed"
+                  value={inputs.breed}
+                  onChange={(e) => handleInputChange(e)}
+                  size="small"
+                />
               </div>
               <div className="input-container">
-                <label htmlFor="sex">Sex</label>
-                <input id="sex" type="text" value={inputs.sex} onChange={(e) => handleInputChange(e)} />
+                <TextField
+                  label="Sex"
+                  id="sex"
+                  value={inputs.sex}
+                  onChange={(e) => handleInputChange(e)}
+                  size="small"
+                />
+                {/* <InputLabel id="sex">Sex</InputLabel>
+                <Select
+                  sx={{ minWidth: '100%' }}
+                  labelId="sex"
+                  id="sex"
+                  value={inputs.sex}
+                  label="Sex"
+                  onChange={(e) => handleInputChange(e)}
+                  size="small"
+                >
+                  <MenuItem value={"Male"}>Male</MenuItem>
+                  <MenuItem value={"Female"}>Female</MenuItem>
+
+                </Select> */}
               </div>
               <div className="input-container">
-                <label htmlFor="color">Color</label>
-                <input id="color" type="text" value={inputs.color} onChange={(e) => handleInputChange(e)} />
+                <TextField
+                  label="Color"
+                  id="color"
+                  value={inputs.color}
+                  onChange={(e) => handleInputChange(e)}
+                  size="small"
+                />
               </div>
               <div className="input-container">
-                <label htmlFor="markings">Markings</label>
-                <input id="markings" type="text" value={inputs.markings} onChange={(e) => handleInputChange(e)} />
+                <TextField
+                  label="Markings"
+                  id="markings"
+                  value={inputs.markings}
+                  onChange={(e) => handleInputChange(e)}
+                  multiline
+                  rows={4}
+                  size="small"
+                />
               </div>
-              <div className="input-container">
-                <label htmlFor="notes">Notes</label>
-                <input id="notes" type="text" value={inputs.notes} onChange={(e) => handleInputChange(e)} />
-              </div>
+              {/* <div className="input-container">
+                <TextField
+                  label="Other Notes"
+                  id="Notes"
+                  value={inputs.notes}
+                  onChange={(e) => handleInputChange(e)}
+                  multiline
+                  rows={4}
+                  size="small"
+                />
+              </div> */}
               <button className='next-button' onClick={(e) => handleNext(e)}>Next</button>
             </form>
           </div>
@@ -133,27 +195,54 @@ function Form() {
           <div id="modal-1-content">
             <form>
               <div className="input-container">
-                <label htmlFor="am_feed">AM Feed</label>
-                <input id="am_feed" type="text" value={inputs.am_feed} onChange={(e) => handleInputChange(e)} />
+                <TextField
+                  label="AM Feed"
+                  id="amFeed"
+                  value={inputs.am_feed}
+                  onChange={(e) => handleInputChange(e)}
+                  size="small"
+                />
               </div>
               <div className="input-container">
-                <label htmlFor="pm_feed">PM Feed</label>
-                <input id="pm_feed" type="text" value={inputs.pm_feed} onChange={(e) => handleInputChange(e)} />
+                <TextField
+                  label="PM Feed"
+                  id="pmFeed"
+                  value={inputs.pm_feed}
+                  onChange={(e) => handleInputChange(e)}
+                  size="small"
+                />
               </div>
               <div className="input-container">
-                <label htmlFor="supplements">supplements</label>
-                <input id="supplements" type="text" value={inputs.supplements} onChange={(e) => handleInputChange(e)} />
+                <TextField
+                  label="Supplements"
+                  id="supplements"
+                  value={inputs.supplements}
+                  onChange={(e) => handleInputChange(e)}
+                  size="small"
+                />
               </div>
               <div className="input-container">
-                <label htmlFor="turnout">Turnout</label>
-                <input id="turnout" type="text" value={inputs.turnout} onChange={(e) => handleInputChange(e)} />
+                <TextField
+                  label="Turnout"
+                  id="turnout"
+                  value={inputs.turnout}
+                  onChange={(e) => handleInputChange(e)}
+                  size="small"
+                />
               </div>
               <div className="input-container">
-                <label htmlFor="blanketing_temp">Blanketing Temp</label>
-                <input id="blanketing_temp" type="text" value={inputs.blanketing_temp} onChange={(e) => handleInputChange(e)} />
+                <TextField
+                  label="Blanketing Temp"
+                  id="blanketingTemp"
+                  value={inputs.blanketing_temp}
+                  onChange={(e) => handleInputChange(e)}
+                  size="small"
+                />
               </div>
-              <button className='back-button' onClick={(e) => handleBack(e)}>Back</button>
-              <button className='next-button' onClick={(e) => handleNext(e)}>Next</button>
+              <div className="button-wrapper">
+                <button className='back-button' onClick={(e) => handleBack(e)}>Back</button>
+                <button className='next-button' onClick={(e) => handleNext(e)}>Next</button>
+              </div>
             </form>
           </div>
         </div>
