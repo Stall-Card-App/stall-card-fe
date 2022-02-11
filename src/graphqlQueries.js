@@ -55,5 +55,33 @@ query fetchHorse($id: ID!) {
   }
 }`
 
+const addHorseQuery = gql`
+mutation AddHorse($input: AddHorseInput!) {
+  addHorse(input: $input) {
+    horse {
+      id
+      name
+      stallNumber
+      age
+      breed
+      sex
+      color
+      markings
+      notes
+      amFeed
+      pmFeed
+      supplements
+      turnout
+      blanketingTemp
+      barnId
+      ownerId
+      vetId
+      farrierId
+    }
+  }
+}
+`
 
-export {dummyQuery, fetchAllHorses, fetchHorse};
+
+
+export {dummyQuery, fetchAllHorses, fetchHorse, addHorseQuery};

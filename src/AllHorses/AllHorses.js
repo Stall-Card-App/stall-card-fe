@@ -3,7 +3,7 @@ import "./AllHorses.scss";
 import { Link } from 'react-router-dom';
 import mockData from "../mockData";
 import HorseCard from "../HorseCard/HorseCard";
-import { dummyQuery, fetchAllHorses } from '../graphqlQueries.js'
+import { fetchAllHorses } from '../graphqlQueries.js';
 import { useQuery } from '@apollo/client';
 
 function AllHorses() {

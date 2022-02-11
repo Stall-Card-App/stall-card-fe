@@ -1,34 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import mockData from "../mockData";
 import "./HorseProfile.scss";
+import { fetchHorse } from '../graphqlQueries.js'
+import { useQuery } from '@apollo/client';
 
 function HorseProfile() {
+  const [horse, setHorse] = useState('')
   const horseId = Number(useParams().id);
-  let horse;
+  let mock;
+
+  const { data } = useQuery(fetchHorse, {
+    variables: { id: horseId },
+    onCompleted: data => {
+      setHorse(() => data.fetchHorse)
+      console.log(horse)
+    },
+    errorPolicy: 'ignore'
+  })
 
   mockData.data.horses.forEach((singleHorse) => {
     if (singleHorse.id === horseId) {
-      horse = singleHorse;
+      mock = singleHorse;
     }
   })
 
-  const owner = mockData.data.owners.find((oneOwner) => {
-    return horse.owner_id === oneOwner.id;
-  })
+  // const owner = mockData.data.owners.find((oneOwner) => {
+  //   return horse.owner_id === oneOwner.id;
+  // })
 
-  const vet = mockData.data.vets.find((oneVet) => {
-    return horse.vet_id === oneVet.id;
-  })
+  // const vet = mockData.data.vets.find((oneVet) => {
+  //   return horse.vet_id === oneVet.id;
+  // })
 
-  const farrier = mockData.data.farriers.find((oneFarrier) => {
-    return horse.farrier_id === oneFarrier.id;
-  })
+  // const farrier = mockData.data.farriers.find((oneFarrier) => {
+  //   return horse.farrier_id === oneFarrier.id;
+  // })
 
   return ( 
     <section className="details-page">
-    <div className="horse-profile">
-      <img className="horse-photo" src={`${horse.photo}`} alt={`Photo of ${horse.name}`} />
+    {horse && <div className="horse-profile">
+      <img className="horse-photo" src={`${mock.photo}`} alt={`Photo of ${horse.name}`} />
     <section className="horse-details">
       <h2>{horse.name}</h2>
       <div className="info-tables">
@@ -80,7 +92,7 @@ function HorseProfile() {
           </tr>
         </tbody>
       </table>
-      <div className="all-contacts">
+      {/* <div className="all-contacts">
         <h3>Important Contacts:</h3>
           <table>
             <tbody>
@@ -110,10 +122,10 @@ function HorseProfile() {
               </tr>
             </tbody>
           </table>
-          </div>
+          </div> */}
         </div>
     </section>
-    </div>
+    </div>}
     <Link to={"/horses"} className="back-button">⬅ Return to All Horses</Link>
     </section>
     

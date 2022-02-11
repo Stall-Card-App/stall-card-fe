@@ -3,47 +3,56 @@ import MicroModal from 'micromodal';
 import { useState } from 'react';
 import ContactFormlet from '../ContactFormlet/ContactFormlet';
 import mockData from "../mockData";
+import { addHorseQuery } from '../graphqlQueries.js';
+import { useMutation } from '@apollo/client';
 
 const initialInputsState = {
   name: '',
-  stall_number: 0,
+  stallNumber: 0,
   age: 0,
   breed: '',
   sex: '',
   color: '',
   markings: '',
   notes: '',
-  am_feed: '',
-  pm_feed: '',
+  amFeed: '',
+  pmFeed: '',
   supplements: '',
   turnout: '',
-  blanketing_temp: 0,
+  blanketingTemp: 0,
   owner: {
-    owner_id: null,
+    owner_id: 0,
     name: '',
     telephone_number: ''
   },
   vet: {
-    vet_id: null,
+    vet_id: 0,
     name: '',
     telephone_number: ''
   },
   farrier: {
-    farrier_id: null,
+    farrier_id: 0,
     name: '',
     telephone_number: ''
   },
-  barn_id: null
+  barnId: 2
 }
+
 
 function Form() {
   const [inputs, setInputs] = useState(initialInputsState)
   const [formPage, setFormPage] = useState(1)
 
+  const [addHorse, { data }] = useMutation(addHorseQuery)
+
   const handleInputChange = (e) => {
     e.preventDefault();
     const newInputs = {...inputs};
-    newInputs[e.target.id] = e.target.value;
+    if (e.target.type === 'number') {
+      newInputs[e.target.id] = Number(e.target.value);
+    } else {
+      newInputs[e.target.id] = e.target.value;
+    }
     setInputs(newInputs);
   }
 
@@ -58,7 +67,20 @@ function Form() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(inputs);
+
+    let newInputs = {...inputs};
+    newInputs.vetId = Number(newInputs.vet.vet_id);
+    newInputs.farrierId = Number(newInputs.farrier.farrier_id);
+    newInputs.ownerId = Number(newInputs.owner.owner_id);
+
+    delete newInputs.owner;
+    delete newInputs.farrier;
+    delete newInputs.vet;
+
+    addHorse({
+      variables: {input: {params: newInputs}}
+    })
+
     setInputs(initialInputsState)
     MicroModal.close('modal-1')
     setFormPage(() => 1)
@@ -92,8 +114,8 @@ function Form() {
                 <input id="name" type="text" value={inputs.name} onChange={(e) => handleInputChange(e)} />
               </div>
               <div className="input-container">
-                <label htmlFor="stall_number">Stall Number</label>
-                <input id="stall_number" type="number" value={inputs.stall_number} onChange={(e) => handleInputChange(e)} />
+                <label htmlFor="stallNumber">Stall Number</label>
+                <input id="stallNumber" type="number" value={inputs.stallNumber} onChange={(e) => handleInputChange(e)} />
               </div>
               <div className="input-container">
                 <label htmlFor="age">Age</label>
@@ -133,12 +155,12 @@ function Form() {
           <div id="modal-1-content">
             <form>
               <div className="input-container">
-                <label htmlFor="am_feed">AM Feed</label>
-                <input id="am_feed" type="text" value={inputs.am_feed} onChange={(e) => handleInputChange(e)} />
+                <label htmlFor="amFeed">AM Feed</label>
+                <input id="amFeed" type="text" value={inputs.amFeed} onChange={(e) => handleInputChange(e)} />
               </div>
               <div className="input-container">
-                <label htmlFor="pm_feed">PM Feed</label>
-                <input id="pm_feed" type="text" value={inputs.pm_feed} onChange={(e) => handleInputChange(e)} />
+                <label htmlFor="pmFeed">PM Feed</label>
+                <input id="pmFeed" type="text" value={inputs.pmFeed} onChange={(e) => handleInputChange(e)} />
               </div>
               <div className="input-container">
                 <label htmlFor="supplements">supplements</label>
@@ -149,8 +171,8 @@ function Form() {
                 <input id="turnout" type="text" value={inputs.turnout} onChange={(e) => handleInputChange(e)} />
               </div>
               <div className="input-container">
-                <label htmlFor="blanketing_temp">Blanketing Temp</label>
-                <input id="blanketing_temp" type="text" value={inputs.blanketing_temp} onChange={(e) => handleInputChange(e)} />
+                <label htmlFor="blanketingTemp">Blanketing Temp</label>
+                <input id="blanketingTemp" type="number" value={inputs.blanketingTemp} onChange={(e) => handleInputChange(e)} />
               </div>
               <button className='back-button' onClick={(e) => handleBack(e)}>Back</button>
               <button className='next-button' onClick={(e) => handleNext(e)}>Next</button>
