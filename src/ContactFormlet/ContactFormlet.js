@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {useMutation, useQuery} from '@apollo/client';
 
 
-function ContactFormlet({contacts, contactType, contactData, mutationName, mutationQuery, queryName, resType}) {
+function ContactFormlet({contactType, mutationQuery, queryName, resType, updateContactID}) {
   const formletOptions = {
     owner: {
       title: 'Owner'
@@ -18,16 +18,23 @@ function ContactFormlet({contacts, contactType, contactData, mutationName, mutat
   const [contact, setContact] = useState({name: '', phoneNumber: ''})
   const [options, setOptions] = useState([])
 
+  const [mutationName] = useMutation(mutationQuery, {
+    refetchQueries: [
+      queryName
+    ]
+  });
+
+  const createOption = (contact) => {
+    return (
+      <option key={contact.id} value={contact.id}>{contact.name}</option>
+    )
+  }
+
   const { data } = useQuery(queryName, {
     onCompleted: data => {
       setOptions(() => {
-        return data[resType].map(contact => {
-          return (
-            <option key={contact.id} value={contact.id}>{contact.name}</option>
-          )
-        })
+        return data[resType].map(contact => createOption(contact))
       })
-      console.log('resttype', resType, 'data', data[resType])
     }})
 
   const handleSubmit = (e) => {
@@ -36,6 +43,8 @@ function ContactFormlet({contacts, contactType, contactData, mutationName, mutat
       variables: {input: {params: contact}}
     });
     setContact({name: '', phoneNumber: ''});
+    setOptions(() => [...options, ])
+    setIsNew(false);
   }
 
   const handleContactChange = (e) => {
@@ -52,17 +61,17 @@ function ContactFormlet({contacts, contactType, contactData, mutationName, mutat
 
   const handleSelectChange = (e) => {
     if (e.target.selectedOptions[0].dataset.isnew === 'true') {
-      setIsNew(() => true)
+      setIsNew(() => true);
     } else {
-      handleContactChange(e)
-      setIsNew(() => false)
+      updateContactID(e);
+      setIsNew(() => false);
     }
   }
 
   return ( 
     <div className="input-container">
-      <label htmlFor={`${contactType}__${contactType}_id`}>{formletOptions[contactType].title}</label>
-      <select id={`${contactType}__${contactType}_id`} onChange={(e) => handleSelectChange(e)} >
+      <label htmlFor={`${contactType}Id`}>{formletOptions[contactType].title}</label>
+      <select id={`${contactType}Id`}  onChange={(e) => handleSelectChange(e)} >
         <option disabled selected value> select an option </option>
         <option data-isnew={true}>New contact</option>
         {options}

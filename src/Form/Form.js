@@ -24,21 +24,9 @@ const initialInputsState = {
   supplements: '',
   turnout: '',
   blanketingTemp: 0,
-  owner: {
-    ownerId: 0,
-    name: '',
-    phoneNumber: ''
-  },
-  vet: {
-    vetId: 0,
-    name: '',
-    phoneNumber: ''
-  },
-  farrier: {
-    farrierId: 0,
-    name: '',
-    phoneNumber: ''
-  },
+  ownerId: 0,
+  vetId: 0,
+  farrierId: 0,
   barnId: 2
 }
 
@@ -47,9 +35,6 @@ function Form({currentHorse}) {
   const [formPage, setFormPage] = useState(1);
 
   const [addHorse] = useMutation(addHorseQuery);
-  const [addVet, {data}] = useMutation(addVetQuery);
-  const [addFarrier] = useMutation(addFarrierQuery);
-  const [addOwner] = useMutation(addOwnerQuery);
 
   const handleInputChange = (e) => {
     e.preventDefault();
@@ -62,37 +47,9 @@ function Form({currentHorse}) {
     setInputs(newInputs);
   }
 
-  const handleContactChange = (e) => {
-    e.preventDefault();
-    const contactType = e.target.id.split('__')[0];
-    const contactField = e.target.id.split('__')[1];
-    const newInputs = {...inputs};
-    newInputs[contactType][contactField] = e.target.value;
-    setInputs(newInputs);
-  }
-
   const handleSubmit = (e) => {
     e.preventDefault();
-
     let newInputs = {...inputs};
-    newInputs.vetId = Number(newInputs.vet.vet_id);
-    newInputs.farrierId = Number(newInputs.farrier.farrier_id);
-    newInputs.ownerId = Number(newInputs.owner.owner_id);
-
-    if (newInputs.vet.name && newInputs.vet.phone) {
-      const newVet = {
-        name: newInputs.vet.name,
-        phoneNumber: newInputs.vet.phoneNumber
-      }
-      addVet(newVet)
-      console.log('stuff', data)
-      // newInputs.vetId = Number(data..id)
-    }
-
-    delete newInputs.owner;
-    delete newInputs.farrier;
-    delete newInputs.vet;
-
     addHorse({
       variables: {input: {params: newInputs}}
     })
@@ -110,6 +67,13 @@ function Form({currentHorse}) {
   const handleBack = (e) => {
     e.preventDefault();
     setFormPage(() => formPage - 1);
+  }
+
+  const updateContactID = (e) => {
+    e.preventDefault();
+    const newInputs = {...inputs};
+    newInputs[e.target.id] = Number(e.target.value);
+    setInputs(newInputs);
   }
 
   MicroModal.init();
@@ -141,6 +105,7 @@ function Form({currentHorse}) {
                   value={inputs.stallNumber}
                   onChange={(e) => handleInputChange(e)}
                   size="small"
+                  type="number"
                 />
               </div>
               <div className="input-container">
@@ -150,6 +115,7 @@ function Form({currentHorse}) {
                     value={inputs.age}
                     onChange={(e) => handleInputChange(e)}
                     size="small"
+                    type="number"
                 />
               </div>
               <div className="input-container">
@@ -230,7 +196,7 @@ function Form({currentHorse}) {
                 <TextField
                   label="PM Feed"
                   id="pmFeed"
-                  value={inputs.pm_feed}
+                  value={inputs.pmFeed}
                   onChange={(e) => handleInputChange(e)}
                   size="small"
                 />
@@ -260,12 +226,13 @@ function Form({currentHorse}) {
                   value={inputs.blanketingTemp}
                   onChange={(e) => handleInputChange(e)}
                   size="small"
+                  type="number"
                 />
               </div>
               <div className="input-container">
                 <TextField
                   label="Other Notes"
-                  id="Notes"
+                  id="notes"
                   value={inputs.notes}
                   onChange={(e) => handleInputChange(e)}
                   multiline
@@ -291,30 +258,23 @@ function Form({currentHorse}) {
           <div id="modal-1-content">
             <form>
             <ContactFormlet 
-              contacts={mockData.data.owners} 
               contactType={"owner"} 
-              handleContactChange={handleContactChange} 
-              contactData={initialInputsState.owner}
-              mutation={addOwner}
+              mutationQuery={addOwnerQuery}
               queryName={fetchAllOwners}
-              resType="fetchOwners" />
+              resType="fetchOwners"
+              updateContactID={updateContactID} />
             <ContactFormlet 
-              contacts={mockData.data.farriers} 
               contactType={"farrier"} 
-              handleContactChange={handleContactChange} 
-              contactData={initialInputsState.farrier}
-              mutation={addFarrier}
+              mutationQuery={addFarrierQuery}
               queryName={fetchAllFarriers}
-              resType="fetchFarriers" />
+              resType="fetchFarriers"
+              updateContactID={updateContactID} />
             <ContactFormlet 
-              contacts={mockData.data.vets} 
               contactType={"vet"} 
-              handleContactChange={handleContactChange} 
-              contactData={initialInputsState.vet}
-              mutationName={addVet}
               mutationQuery={addVetQuery}
               queryName={fetchAllVets}
               resType="fetchVets"
+              updateContactID={updateContactID}
                />
               <button className='back-button' onClick={(e) => handleBack(e)}>Back</button>
               <button className='submit-button' onClick={(e) => handleSubmit(e)}>Submit</button>
