@@ -2,24 +2,35 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 3;
-  gap: 1em;
-  margin: 0 1em 1em 1em;
+  gap: 1.5em;
+  margin: 1.5em 1.5em 1.5em 1.5em;
+  flex: 1;
 }
 
 .new-horse-button {
+  font-weight: bold;
+  font-size: 1.5em;
   color: white;
-  background-color: green;
+  background-color: #D36135;
   border: none;
   position: fixed;
   cursor: pointer;
-  left: 275px;
-  bottom: 0;
+  right: 25px;
+  bottom: 25px;
   margin: 1%;
   border-radius: 5em;
-  padding: 1em;
+  padding: 0.75em;
   line-height: .6em;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 200ms ease-in-out;
+  &:hover {
+    transform: translateY(-5px);
+  }
 }
 
+i {
+  width: 24px;
+}
 @media (max-width: 500px) {
   .Dashboard {
     grid-template-columns: 1fr;
