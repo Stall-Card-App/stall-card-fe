@@ -82,6 +82,39 @@ mutation AddHorse($input: AddHorseInput!) {
 }
 `
 
+const addOwnerQuery = gql`
+  mutation AddOwner($input: AddOwnerInput!) {
+    addOwner(input: $input) {
+      owner {
+        id
+        phoneNumber
+        name
+      }
+    }
+  }`
+
+const addVetQuery = gql`
+  mutation AddVet($input: AddVetInput!) {
+    addVet(input: $input) {
+      vet {
+        id
+        phoneNumber
+        name
+      }
+    }
+  }`
+
+const addFarrierQuery = gql`
+  mutation AddFarrier($input: AddFarrierInput!) {
+    addFarrier(input: $input) {
+      farrier {
+        id
+        phoneNumber
+        name
+      }
+    }
+  }`
+
 const fetchVet = gql`
 query FetchVet($id: ID!) {
   fetchVet(id: $id) {
@@ -112,4 +145,34 @@ query FetchOwner($id: ID!) {
 }
 `
 
-export {dummyQuery, fetchAllHorses, fetchHorse, addHorseQuery, fetchVet, fetchFarrier, fetchOwner};
+const fetchAllVets = gql`
+query {
+  fetchVets {
+    id
+    name
+    phoneNumber
+  }
+}
+`
+
+const fetchAllOwners = gql`
+query {
+  fetchOwners {
+    id
+    name
+    phoneNumber
+  }
+}
+`
+
+const fetchAllFarriers = gql`
+query {
+  fetchFarriers {
+    id
+    name
+    phoneNumber
+  }
+}
+`
+
+export {dummyQuery, fetchAllHorses, fetchHorse, addHorseQuery, fetchVet, fetchFarrier, fetchOwner, addFarrierQuery, addVetQuery, addOwnerQuery, fetchAllFarriers, fetchAllOwners, fetchAllVets};

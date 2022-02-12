@@ -3,7 +3,7 @@ import MicroModal from 'micromodal';
 import { useState } from 'react';
 import ContactFormlet from '../ContactFormlet/ContactFormlet';
 import mockData from "../mockData";
-import { addHorseQuery } from '../graphqlQueries.js';
+import { addHorseQuery, addFarrierQuery, addOwnerQuery, addVetQuery, fetchAllFarriers, fetchAllVets, fetchAllOwners } from '../graphqlQueries.js';
 import { useMutation } from '@apollo/client';
 
 const initialInputsState = {
@@ -21,29 +21,31 @@ const initialInputsState = {
   turnout: '',
   blanketingTemp: 0,
   owner: {
-    owner_id: 0,
+    ownerId: 0,
     name: '',
-    telephone_number: ''
+    phoneNumber: ''
   },
   vet: {
-    vet_id: 0,
+    vetId: 0,
     name: '',
-    telephone_number: ''
+    phoneNumber: ''
   },
   farrier: {
-    farrier_id: 0,
+    farrierId: 0,
     name: '',
-    telephone_number: ''
+    phoneNumber: ''
   },
   barnId: 2
 }
 
+function Form({currentHorse}) {
+  const [inputs, setInputs] = useState(initialInputsState);
+  const [formPage, setFormPage] = useState(1);
 
-function Form() {
-  const [inputs, setInputs] = useState(initialInputsState)
-  const [formPage, setFormPage] = useState(1)
-
-  const [addHorse, { data }] = useMutation(addHorseQuery)
+  const [addHorse] = useMutation(addHorseQuery);
+  const [addVet, {data}] = useMutation(addVetQuery);
+  const [addFarrier] = useMutation(addFarrierQuery);
+  const [addOwner] = useMutation(addOwnerQuery);
 
   const handleInputChange = (e) => {
     e.preventDefault();
@@ -72,6 +74,16 @@ function Form() {
     newInputs.vetId = Number(newInputs.vet.vet_id);
     newInputs.farrierId = Number(newInputs.farrier.farrier_id);
     newInputs.ownerId = Number(newInputs.owner.owner_id);
+
+    if (newInputs.vet.name && newInputs.vet.phone) {
+      const newVet = {
+        name: newInputs.vet.name,
+        phoneNumber: newInputs.vet.phoneNumber
+      }
+      addVet(newVet)
+      console.log('stuff', data)
+      // newInputs.vetId = Number(data..id)
+    }
 
     delete newInputs.owner;
     delete newInputs.farrier;
@@ -189,9 +201,32 @@ function Form() {
           </header>
           <div id="modal-1-content">
             <form>
-            <ContactFormlet contacts={mockData.data.owners} contactType={"owner"} handleContactChange={handleContactChange} contactData={initialInputsState.owner} />
-            <ContactFormlet contacts={mockData.data.farriers} contactType={"farrier"} handleContactChange={handleContactChange} contactData={initialInputsState.farrier} />
-            <ContactFormlet contacts={mockData.data.vets} contactType={"vet"} handleContactChange={handleContactChange} contactData={initialInputsState.vet} />
+            <ContactFormlet 
+              contacts={mockData.data.owners} 
+              contactType={"owner"} 
+              handleContactChange={handleContactChange} 
+              contactData={initialInputsState.owner}
+              mutation={addOwner}
+              queryName={fetchAllOwners}
+              resType="fetchOwners" />
+            <ContactFormlet 
+              contacts={mockData.data.farriers} 
+              contactType={"farrier"} 
+              handleContactChange={handleContactChange} 
+              contactData={initialInputsState.farrier}
+              mutation={addFarrier}
+              queryName={fetchAllFarriers}
+              resType="fetchFarriers" />
+            <ContactFormlet 
+              contacts={mockData.data.vets} 
+              contactType={"vet"} 
+              handleContactChange={handleContactChange} 
+              contactData={initialInputsState.vet}
+              mutationName={addVet}
+              mutationQuery={addVetQuery}
+              queryName={fetchAllVets}
+              resType="fetchVets"
+               />
               <button className='back-button' onClick={(e) => handleBack(e)}>Back</button>
               <button className='submit-button' onClick={(e) => handleSubmit(e)}>Submit</button>
             </form>
