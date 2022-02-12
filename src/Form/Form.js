@@ -3,66 +3,68 @@ import MicroModal from 'micromodal';
 import { useState } from 'react';
 import ContactFormlet from '../ContactFormlet/ContactFormlet';
 import mockData from "../mockData";
+import { addHorseQuery, addFarrierQuery, addOwnerQuery, addVetQuery, fetchAllFarriers, fetchAllVets, fetchAllOwners, updateHorseQuery } from '../graphqlQueries.js';
+import { useMutation } from '@apollo/client';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 
-const initialInputsState = {
-  name: '',
-  stall_number: 0,
-  age: 0,
-  breed: '',
-  sex: '',
-  color: '',
-  markings: '',
-  notes: '',
-  am_feed: '',
-  pm_feed: '',
-  supplements: '',
-  turnout: '',
-  blanketing_temp: 0,
-  owner: {
-    owner_id: null,
-    name: '',
-    telephone_number: ''
-  },
-  vet: {
-    vet_id: null,
-    name: '',
-    telephone_number: ''
-  },
-  farrier: {
-    farrier_id: null,
-    name: '',
-    telephone_number: ''
-  },
-  barn_id: null
-}
 
-function Form() {
-  const [inputs, setInputs] = useState(initialInputsState)
-  const [formPage, setFormPage] = useState(1)
+function Form({currentHorse}) {
+  const initialInputsState = currentHorse ? currentHorse : {
+    name: '',
+    stallNumber: 0,
+    age: 0,
+    breed: '',
+    sex: '',
+    color: '',
+    markings: '',
+    notes: '',
+    amFeed: '',
+    pmFeed: '',
+    supplements: '',
+    turnout: '',
+    blanketingTemp: 0,
+    ownerId: 0,
+    vetId: 0,
+    farrierId: 0,
+    barnId: 2
+  };
+  
+  const [inputs, setInputs] = useState(initialInputsState);
+  const [formPage, setFormPage] = useState(1);
+
+  const [addHorse] = useMutation(addHorseQuery);
+  const [updateHorse] = useMutation(updateHorseQuery);
 
   const handleInputChange = (e) => {
     e.preventDefault();
     const newInputs = {...inputs};
-    newInputs[e.target.id] = e.target.value;
-    setInputs(newInputs);
-  }
-
-  const handleContactChange = (e) => {
-    e.preventDefault();
-    const contactType = e.target.id.split('__')[0];
-    const contactField = e.target.id.split('__')[1];
-    const newInputs = {...inputs};
-    newInputs[contactType][contactField] = e.target.value;
+    if (e.target.type === 'number') {
+      newInputs[e.target.id] = Number(e.target.value);
+    } else {
+      newInputs[e.target.id] = e.target.value;
+    }
     setInputs(newInputs);
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(inputs);
+    let newInputs = {...inputs};
+    if (currentHorse) {
+      const currentId = Number(newInputs.id);
+      delete newInputs.id;
+      delete newInputs.__typename;
+      updateHorse({
+        variables: {input: {id: currentId, params: newInputs}}
+      })
+    } else {
+      addHorse({
+        variables: {input: {params: newInputs}}
+      })
+    }
+
     setInputs(initialInputsState)
     MicroModal.close('modal-1')
     setFormPage(() => 1)
@@ -76,6 +78,13 @@ function Form() {
   const handleBack = (e) => {
     e.preventDefault();
     setFormPage(() => formPage - 1);
+  }
+
+  const updateContactID = (e) => {
+    e.preventDefault();
+    const newInputs = {...inputs};
+    newInputs[e.target.id] = Number(e.target.value);
+    setInputs(newInputs);
   }
 
   MicroModal.init();
@@ -104,9 +113,10 @@ function Form() {
                 <TextField
                   label="Stall #"
                   id="stallNumber"
-                  value={inputs.stall_number}
+                  value={inputs.stallNumber}
                   onChange={(e) => handleInputChange(e)}
                   size="small"
+                  type="number"
                 />
               </div>
               <div className="input-container">
@@ -116,6 +126,7 @@ function Form() {
                     value={inputs.age}
                     onChange={(e) => handleInputChange(e)}
                     size="small"
+                    type="number"
                 />
               </div>
               <div className="input-container">
@@ -187,7 +198,7 @@ function Form() {
                 <TextField
                   label="AM Feed"
                   id="amFeed"
-                  value={inputs.am_feed}
+                  value={inputs.amFeed}
                   onChange={(e) => handleInputChange(e)}
                   size="small"
                 />
@@ -196,7 +207,7 @@ function Form() {
                 <TextField
                   label="PM Feed"
                   id="pmFeed"
-                  value={inputs.pm_feed}
+                  value={inputs.pmFeed}
                   onChange={(e) => handleInputChange(e)}
                   size="small"
                 />
@@ -223,15 +234,16 @@ function Form() {
                 <TextField
                   label="Blanketing Temp"
                   id="blanketingTemp"
-                  value={inputs.blanketing_temp}
+                  value={inputs.blanketingTemp}
                   onChange={(e) => handleInputChange(e)}
                   size="small"
+                  type="number"
                 />
               </div>
               <div className="input-container">
                 <TextField
                   label="Other Notes"
-                  id="Notes"
+                  id="notes"
                   value={inputs.notes}
                   onChange={(e) => handleInputChange(e)}
                   multiline
@@ -256,9 +268,25 @@ function Form() {
           </header>
           <div id="modal-1-content">
             <form>
-            <ContactFormlet contacts={mockData.data.owners} contactType={"owner"} handleContactChange={handleContactChange} contactData={initialInputsState.owner} />
-            <ContactFormlet contacts={mockData.data.farriers} contactType={"farrier"} handleContactChange={handleContactChange} contactData={initialInputsState.farrier} />
-            <ContactFormlet contacts={mockData.data.vets} contactType={"vet"} handleContactChange={handleContactChange} contactData={initialInputsState.vet} />
+            <ContactFormlet 
+              contactType={"owner"} 
+              mutationQuery={addOwnerQuery}
+              queryName={fetchAllOwners}
+              resType="fetchOwners"
+              updateContactID={updateContactID} />
+            <ContactFormlet 
+              contactType={"farrier"} 
+              mutationQuery={addFarrierQuery}
+              queryName={fetchAllFarriers}
+              resType="fetchFarriers"
+              updateContactID={updateContactID} />
+            <ContactFormlet 
+              contactType={"vet"} 
+              mutationQuery={addVetQuery}
+              queryName={fetchAllVets}
+              resType="fetchVets"
+              updateContactID={updateContactID}
+               />
               <button className='back-button' onClick={(e) => handleBack(e)}>Back</button>
               <button className='submit-button' onClick={(e) => handleSubmit(e)}>Submit</button>
             </form>

@@ -2,7 +2,7 @@ const mockData = {
   "data": {
     "horses": [
       {
-        "id": 123213,
+        "id": 2,
         "photo": "https://s3-alpha-sig.figma.com/img/520c/c080/e8417a897a0fa40f213545cee4f768aa?Expires=1645401600&Signature=ZNR~~tu2Gnkr-ZaPaodrjGZkGvWxMBkUUDC4gw4BidDBsEoJqzWqXF2e6915FxhjoubMHDLNf52RcIQUUHCCl3W1mdHTGywRD50oDm7WvxXQF8opEkEvDo~9mv4rLA9Mr6TbLADzrtl9xR1SY0FobqpvZdRZ7P3yokwvMRxIVG-9x1cf6WjtcOwpTkBKU42-9sgIsnQ7MuaTC~H9dvJFZLX1R2dGEsfKhOVaN1zLDND8Q1fZk728PjOzxTElehrCiOtyb1ukx7q-2RP2kZCxmg~RJsg7ynhPrAuNM2JJEOu8crdNuIawuea6eCfdojZmZhleXEyg56S3i0wb2y~q7A__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
         "name": "Bloopy",
         "stall_number": 12,
@@ -151,59 +151,59 @@ const mockData = {
       ],
     "owners": [
       {
-        "id": 22221,
+        "id": 1,
         "name": "Jo Smith",
         "phone_number": 15557898
       },
       {
-        "id": 22223,
+        "id": 2,
         "name": "Terry",
         "phone_number": 15558794
       }
       ],
     "vets": [
       {
-        "id": 333331,
+        "id": 1,
         "name": "Horse Whisperer",
         "phone_number": 15557777
       },
       {
-        "id": 333333,
+        "id": 2,
         "name": "Horse Healer",
         "phone_number": 15558888
       }
     ],
     "farriers": [
       {
-        "id": 444441,
+        "id": 1,
         "name": "Horse Cobbler",
         "phone_number": 15559999
       },
       {
-        "id": 444442,
+        "id": 2,
         "name": "Horse Shoer",
         "phone_number": 15556666
       }
     ],
     "barn": [
       {
-        "id": 777,
+        "id": 1,
         "name": "Happy Hills Farm :)"
       },
       {
-        "id": 888,
+        "id": 2,
         "name": "Sad Hills Farm :("
       }
     ],
     "employees": [
     {
-      "id": 1111,
+      "id": 1,
       "name": "Jerry",
       "phone_number": 15551234,
       "barn_id": 777
     },
     {
-      "id": 2222,
+      "id": 2,
       "name": "Terry",
       "phone_number": 15554321,
       "barn_id": 777
