@@ -1,10 +1,12 @@
+@use "../_variables"as v;
+
 .sidebar-container {
     //font-size: 1.6rem;
-    background-color: #3D4836;
+    background-color: v.$grayGreen;
     height: 100vh;
     min-width: 250px;
     color: white;
-    //position: fixed;
+    // position: fixed;
 }
 
 .placeholder-logo {

@@ -1,8 +1,8 @@
+@use "../_variables"as v;
+
 .header-container {
-    background-color: #EDEAE7;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    background-color: v.$headerBackground;
+    @include v.flexbox(row, space-between, center);
     padding-left: 35px;
     padding-right: 35px;
     height: 90px;

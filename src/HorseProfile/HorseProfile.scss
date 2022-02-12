@@ -1,0 +1,49 @@
+@use "../_variables"as v;
+
+.details-page {
+    width: 100%;
+    @include v.flexbox(column, flex-start, center);
+    
+    .back-button {
+        color: v.$grayGreen;
+        text-decoration: none;
+        font-size: 150%;
+    }
+}
+
+.horse-profile {
+    @include v.flexbox(row, space-around, center);
+    width: 100%;
+}
+
+.horse-photo {
+    height: 70vh;
+    margin: 3%;
+    border-radius: 2%;
+    box-shadow: 5px 5px 5px 3px v.$headerBackground;
+}
+
+.horse-details {
+    @include v.flexbox(column, space-around, center);
+    width: 50%;
+    height: 70vh;
+    background-color: white;
+    border-radius: 2%;
+    box-shadow: 5px 5px 5px 3px v.$headerBackground;
+}
+
+.info-tables {
+    width: 100%;
+    padding-left: 10%;
+    table {
+        width: 60%;
+    }
+    
+    tbody {
+        @include v.flexbox(column, flex-start, space-between);
+        tr {
+            @include v.flexbox(row, space-between, center);
+        }
+    }
+
+}
