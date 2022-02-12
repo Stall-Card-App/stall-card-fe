@@ -3,38 +3,40 @@ import MicroModal from 'micromodal';
 import { useState } from 'react';
 import ContactFormlet from '../ContactFormlet/ContactFormlet';
 import mockData from "../mockData";
-import { addHorseQuery, addFarrierQuery, addOwnerQuery, addVetQuery, fetchAllFarriers, fetchAllVets, fetchAllOwners } from '../graphqlQueries.js';
+import { addHorseQuery, addFarrierQuery, addOwnerQuery, addVetQuery, fetchAllFarriers, fetchAllVets, fetchAllOwners, updateHorseQuery } from '../graphqlQueries.js';
 import { useMutation } from '@apollo/client';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 
-const initialInputsState = {
-  name: '',
-  stallNumber: 0,
-  age: 0,
-  breed: '',
-  sex: '',
-  color: '',
-  markings: '',
-  notes: '',
-  amFeed: '',
-  pmFeed: '',
-  supplements: '',
-  turnout: '',
-  blanketingTemp: 0,
-  ownerId: 0,
-  vetId: 0,
-  farrierId: 0,
-  barnId: 2
-}
 
 function Form({currentHorse}) {
+  const initialInputsState = currentHorse ? currentHorse : {
+    name: '',
+    stallNumber: 0,
+    age: 0,
+    breed: '',
+    sex: '',
+    color: '',
+    markings: '',
+    notes: '',
+    amFeed: '',
+    pmFeed: '',
+    supplements: '',
+    turnout: '',
+    blanketingTemp: 0,
+    ownerId: 0,
+    vetId: 0,
+    farrierId: 0,
+    barnId: 2
+  };
+  
   const [inputs, setInputs] = useState(initialInputsState);
   const [formPage, setFormPage] = useState(1);
 
   const [addHorse] = useMutation(addHorseQuery);
+  const [updateHorse] = useMutation(updateHorseQuery);
 
   const handleInputChange = (e) => {
     e.preventDefault();
@@ -50,9 +52,18 @@ function Form({currentHorse}) {
   const handleSubmit = (e) => {
     e.preventDefault();
     let newInputs = {...inputs};
-    addHorse({
-      variables: {input: {params: newInputs}}
-    })
+    if (currentHorse) {
+      const currentId = Number(newInputs.id);
+      delete newInputs.id;
+      delete newInputs.__typename;
+      updateHorse({
+        variables: {input: {id: currentId, params: newInputs}}
+      })
+    } else {
+      addHorse({
+        variables: {input: {params: newInputs}}
+      })
+    }
 
     setInputs(initialInputsState)
     MicroModal.close('modal-1')

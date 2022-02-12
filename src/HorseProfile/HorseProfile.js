@@ -5,6 +5,8 @@ import "./HorseProfile.scss";
 import { fetchHorse, fetchVet, fetchFarrier, fetchOwner } from '../graphqlQueries.js'
 import { useQuery } from '@apollo/client';
 import ContactDetails from "../ContactDetails/ContactDetails";
+import Form from "../Form/Form";
+import MicroModal from 'micromodal';
 
 function HorseProfile() {
   const [horse, setHorse] = useState('')
@@ -45,6 +47,10 @@ function HorseProfile() {
   return ( 
     <section className="details-page">
       {horse && <div className="horse-profile">
+      <Form currentHorse={horse}/>
+      <button className='new-horse-button' onClick={() => MicroModal.show('modal-1')}>
+        <i className="fas fa-plus"></i>
+      </button>
         <img className="horse-photo" src={`${mockData.data.horses[1].photo}`} alt={`Photo of ${horse.name}`} />
         <section className="horse-details">
           <h2>{horse.name}</h2>
@@ -53,7 +59,7 @@ function HorseProfile() {
             <tbody>
               <tr>
                 <th>Stall:</th>
-                <td>{horse.stall_number}</td>
+                <td>{horse.stallNumber}</td>
               </tr>
               <tr>
                 <th>Breed:</th>
@@ -77,11 +83,11 @@ function HorseProfile() {
               </tr>
               <tr>
                 <th>AM Feed:</th>
-                <td>{horse.am_feed}</td>
+                <td>{horse.amFeed}</td>
               </tr>
               <tr>
                 <th>PM Feed:</th>
-                <td>{horse.pm_feed}</td>
+                <td>{horse.pmFeed}</td>
               </tr>
               <tr>
                 <th>Supplements:</th>
@@ -93,7 +99,7 @@ function HorseProfile() {
               </tr>
               <tr>
                 <th>Blanketing Temperature:</th>
-                <td>{horse.blanketing_temp}</td>
+                <td>{horse.blanketingTemp}</td>
               </tr>
             </tbody>
           </table>
