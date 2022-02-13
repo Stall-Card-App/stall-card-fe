@@ -4,6 +4,7 @@ import Dashboard from '../Dashboard/Dashboard';
 import HorseProfile from '../HorseProfile/HorseProfile';
 import Sidebar from '../Sidebar/Sidebar';
 import Header from '../Header/Header';
+import NotFound from '../NotFound/NotFound';
 import './App.scss';
 
 function App() {
