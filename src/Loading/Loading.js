@@ -1,9 +1,10 @@
 import React from "react";
 import loadingGif from "../assets/blackHorse.gif";
+import "./Loading.scss";
 
 const Loading = () => {
     return (
-        <div>
+        <div className="loading">
             <img src={loadingGif} alt="animation of running horse"/>
             <p>Loading, please wait...</p>
         </div>
