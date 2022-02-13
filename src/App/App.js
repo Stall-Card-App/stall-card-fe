@@ -13,6 +13,7 @@ function App() {
       <section className='main-section'>
         <Header />
         <Routes>
+          <Route path='*' element={<NotFound />} />
           <Route path='/' element={<Dashboard />} />
           <Route path='/horses' element={<AllHorses />} />
           <Route path='/horses/:id' element={<HorseProfile />} />
