@@ -7,7 +7,7 @@ import Sidebar from '../Sidebar/Sidebar';
 import Header from '../Header/Header';
 import MobileNav from '../MobileNav/MobileNav';
 import { useMediaQuery } from 'react-responsive';
-
+import NotFound from '../NotFound/NotFound';
 import './App.scss';
 
 function App() {
@@ -25,6 +25,7 @@ function App() {
       {isTabletOrMobile ? <MobileNav updateCurrentPage={updateCurrentPage} /> : <Header />}
       {isTabletOrMobile && <h1 className="page-title">{currentPage}</h1>}
         <Routes>
+          <Route path='*' element={<NotFound />} />
           <Route path='/' element={<Dashboard />} />
           <Route path='/horses' element={<AllHorses />} />
           <Route path='/horses/:id' element={<HorseProfile />} />

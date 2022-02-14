@@ -6,6 +6,7 @@ import { fetchHorse, fetchVet, fetchFarrier, fetchOwner } from '../graphqlQuerie
 import { useQuery } from '@apollo/client';
 import ContactDetails from "../ContactDetails/ContactDetails";
 import Form from "../Form/Form";
+import Loading from "../Loading/Loading";
 import MicroModal from 'micromodal';
 
 function HorseProfile() {
@@ -17,7 +18,7 @@ function HorseProfile() {
   })
   const horseId = Number(useParams().id);
 
-  useQuery(fetchHorse, {
+  const {loading, error} = useQuery(fetchHorse, {
     variables: { id: horseId },
     onCompleted: data => {
       setHorse(() => data.fetchHorse);
@@ -46,6 +47,7 @@ function HorseProfile() {
 
   return ( 
     <section className="details-page">
+      {loading && <Loading />}
       {horse && <div className="horse-profile">
       <Form currentHorse={horse}/>
       <button className='new-horse-button' onClick={() => MicroModal.show('modal-1')}>
