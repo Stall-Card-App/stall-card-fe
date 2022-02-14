@@ -1,0 +1,26 @@
+{
+  "data": {
+      "addHorse": {
+          "horse": {
+              "id": "13",
+              "name": "Test Horse",
+              "stallNumber": 1,
+              "age": 1,
+              "breed": "breed",
+              "sex": "sex",
+              "color": "color",
+              "markings": "markings",
+              "notes": "notes",
+              "amFeed": "am",
+              "pmFeed": "pm",
+              "supplements": "supplements",
+              "turnout": "turnout",
+              "blanketingTemp": 1,
+              "barnId": 3,
+              "ownerId": 2,
+              "vetId": 2,
+              "farrierId": 2
+          }
+      }
+  }
+}

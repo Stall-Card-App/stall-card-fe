@@ -1,0 +1,26 @@
+{
+  "data": {
+      "fetchFarriers": [
+          {
+              "id": "2",
+              "name": "Test Farrier Cypress",
+              "phoneNumber": "12345678911"
+          },
+          {
+              "id": "3",
+              "name": "Jo Smith",
+              "phoneNumber": "15551234"
+          },
+          {
+              "id": "5",
+              "name": "Ferry Farrier",
+              "phoneNumber": "15556363"
+          },
+          {
+              "id": "4",
+              "name": "Another Farrier",
+              "phoneNumber": "155542212"
+          }
+      ]
+  }
+}
