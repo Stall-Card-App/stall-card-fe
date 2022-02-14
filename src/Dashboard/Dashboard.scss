@@ -6,7 +6,9 @@
   grid-template-rows: 3;
   gap: 1.5em;
   margin: 1.5em 1.5em 1.5em 1.5em;
-  flex: 1;
+  //flex: 1;
+  height: calc(100vh - 90px - 3em);
+  margin-top: calc(90px + 1.5em);
 }
 
 .new-horse-button {

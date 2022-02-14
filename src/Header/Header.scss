@@ -6,7 +6,8 @@
     padding-left: 35px;
     padding-right: 35px;
     height: 90px;
-    //flex: 1;
+    position: fixed;
+    width: calc(100vw - 321px);
     h1 {
         font-weight: 500;
         font-size: 20px;

@@ -3,6 +3,7 @@
 .horse-grid {
     @include v.flexbox(row, flex-start, flex-start);
     flex-wrap: wrap;
+    margin-top: calc(90px + 1.5em);
 
     a {
         text-decoration: none;
