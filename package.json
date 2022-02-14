@@ -1,6 +1,5 @@
 {
   "name": "stall-card-fe",
-  "proxy": "https://aqueous-savannah-80171.herokuapp.com/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
