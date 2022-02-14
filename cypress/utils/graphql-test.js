@@ -1,7 +1,7 @@
 export const hasOperationName = (req, operationName) => {
   const { body } = req
   return (
-    body.hasOwnProperty('operationName') && body.operationName === operationName
+    body.hasOwnProperty('query') && body.query.includes(operationName)
   )
 }
 

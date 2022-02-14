@@ -1,0 +1,24 @@
+{
+  "data": {
+      "fetchHorse": {
+          "id": "5",
+          "name": "Test Horsey Cypress",
+          "stallNumber": 1,
+          "age": 1,
+          "breed": "breed",
+          "sex": "sexy",
+          "color": "color",
+          "markings": "markings",
+          "notes": "notes",
+          "amFeed": "am",
+          "pmFeed": "pm",
+          "supplements": "supplements",
+          "turnout": "turnout",
+          "blanketingTemp": 1,
+          "barnId": 3,
+          "ownerId": 2,
+          "vetId": 2,
+          "farrierId": 3
+      }
+  }
+}

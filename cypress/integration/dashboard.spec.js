@@ -3,6 +3,12 @@
 describe('Dashboard', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/')
+    cy.intercept('POST', 'https://aqueous-savannah-80171.herokuapp.com/graphql', (req) => {
+      aliasQuery(req, 'fetchHorses')
+      req.reply({
+        fixture: 'allHorses.json'
+      })
+    })
   })
 
   it('Should have a header', () => {
