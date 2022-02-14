@@ -7,6 +7,9 @@ describe('Form', () => {
       aliasQuery(req, 'fetchHorses')
       aliasQuery(req, 'fetchHorse')
       aliasMutation(req, 'addHorse')
+      aliasMutation(req, 'addOwner')
+      aliasMutation(req, 'addFarrier')
+      aliasMutation(req, 'addVet')
 
       if (hasOperationName(req, 'fetchHorses')) {
         req.reply({
@@ -31,6 +34,18 @@ describe('Form', () => {
       } else if (hasOperationName(req, 'addHorse')) {
         req.reply({
           fixture: 'addHorse.json'
+        }) 
+      } else if (hasOperationName(req, 'addOwner')) {
+        req.reply({
+          fixture: 'addHorse.json'
+        }) 
+      } else if (hasOperationName(req, 'addFarrier')) {
+        req.reply({
+          fixture: 'addFarrier.json'
+        }) 
+      } else if (hasOperationName(req, 'addVet')) {
+        req.reply({
+          fixture: 'addVet.json'
         }) 
       } 
     })
@@ -90,13 +105,78 @@ describe('Form', () => {
       cy.get('.submit-button').click()
       cy.wait('@gqladdHorseMutation')
         .its('request.body.variables.input.params')
-        .should('have.property', 'age', 27)
-        .should('have.property', 'name', 'Billy')
-        .should('have.property', 'stallNumber', 42)
-        .should('have.property', 'breed', 'Appaloosa')
-        .should('have.property', 'blanketingTemp', 40)
-        .should('have.property', 'ownerId', '2')
-        //  'name', 'Billy', 'stallNumber', 42, 'breed', 'Appaloosa', 'sex', 'gelding', 'color', 'chestnut', 'markings', 'brown spots', 'amFeed', 'grain', 'pmFeed', 'flake hay', 'supplements', 'vitamins', 'turnout', 'field', 'blanketingTemp', 40, 'notes', 'This is a good horse', 'ownerId', '2', 'farrierId', '2', 'vetId', '2')
-        // .should('have.property', 'age', '42', 'breed', 'sex', 'amFeed', 'barnId', 'blanketingTemp', 'farrierId', 'markings', 'name')
+        .then(res => {
+          cy.wrap(res).should('have.property', 'name', 'Billy')
+          cy.wrap(res).should('have.property', 'stallNumber', 42)
+          cy.wrap(res).should('have.property', 'age', 27)
+          cy.wrap(res).should('have.property', 'sex', 'gelding')
+          cy.wrap(res).should('have.property', 'color', 'chestnut')
+          cy.wrap(res).should('have.property', 'markings', 'brown spots')
+          cy.wrap(res).should('have.property', 'amFeed', 'grain')
+          cy.wrap(res).should('have.property', 'pmFeed', 'flake hay')
+          cy.wrap(res).should('have.property', 'supplements', 'vitamins')
+          cy.wrap(res).should('have.property', 'turnout', 'field')
+          cy.wrap(res).should('have.property', 'notes', 'This is a good horse')
+          cy.wrap(res).should('have.property', 'farrierId', 2)
+          cy.wrap(res).should('have.property', 'vetId', 2)
+          cy.wrap(res).should('have.property', 'breed', 'Appaloosa')
+          cy.wrap(res).should('have.property', 'blanketingTemp', 40)
+          cy.wrap(res).should('have.property', 'ownerId', 2)
+        })
+    })
+
+    it('should be able to create new contacts', () => {
+      cy.get('.new-horse-button').click()
+      cy.get('#name').click().type('Billy')
+      cy.get('#stallNumber').click().type('42')
+      cy.get('#age').click().type('27')
+      cy.get('#breed').click().type('Appaloosa')
+      cy.get('#sex').click().type('gelding')
+      cy.get('#color').click().type('chestnut')
+      cy.get('#markings').click().type('brown spots')
+      cy.get('.next-button').click()
+
+      cy.get('#amFeed').click().type('grain')
+      cy.get('#pmFeed').click().type('flake hay')
+      cy.get('#supplements').click().type('vitamins')
+      cy.get('#turnout').click().type('field')
+      cy.get('#blanketingTemp').click().type('40')
+      cy.get('#notes').click().type('This is a good horse')
+      cy.get('.next-button').click()
+
+      cy.get('#ownerId').select('New contact')
+      cy.get('#name').click().type('Horse Owner')
+      cy.get('#phoneNumber').click().type('15551478')
+      cy.contains('Save contact').click()
+      cy.wait('@gqladdOwnerMutation')
+        .its('request.body.variables.input.params')
+        .then(res => {
+          cy.wrap(res).should('have.property', 'name', 'Horse Owner')
+          cy.wrap(res).should('have.property', 'phoneNumber', '15551478')
+        })
+      cy.get('#farrierId').select('New contact')
+      cy.get('#name').click().type('Horse Farrier')
+      cy.get('#phoneNumber').click().type('15551465')
+      cy.contains('Save contact').click()
+      cy.wait('@gqladdFarrierMutation')
+      .its('request.body.variables.input.params')
+      .then(res => {
+        cy.wrap(res).should('have.property', 'name', 'Horse Farrier')
+        cy.wrap(res).should('have.property', 'phoneNumber', '15551465')
+      })
+
+      cy.get('#vetId').select('New contact')
+      cy.get('#name').click().type('Horse Vet')
+      cy.get('#phoneNumber').click().type('15551488')
+      cy.contains('Save contact').click()
+      cy.wait('@gqladdVetMutation')
+      .its('request.body.variables.input.params')
+      .then(res => {
+        cy.wrap(res).should('have.property', 'name', 'Horse Vet')
+        cy.wrap(res).should('have.property', 'phoneNumber', '15551488')
+      })
+      cy.get('.submit-button').click()
+
+
     })
 })
