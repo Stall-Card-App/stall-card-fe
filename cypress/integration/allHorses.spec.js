@@ -1,5 +1,5 @@
 /// <reference types="Cypress" />
-import { aliasQuery, aliasMutation, hasOperationName } from '../utils/graphql-test'
+import { aliasQuery, hasOperationName } from '../utils/graphql-test'
 
 describe('All horses page', () => {
   beforeEach(() => {
