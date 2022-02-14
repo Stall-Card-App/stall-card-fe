@@ -1,0 +1,11 @@
+@use "../_variables" as v;
+
+.horse-grid {
+    @include v.flexbox(row, flex-start, flex-start);
+    flex-wrap: wrap;
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+}

@@ -1,0 +1,17 @@
+@use "../_variables"as v;
+
+.info-tables {
+  width: 100%;
+  padding-left: 10%;
+  table {
+      width: 60%;
+  }
+  
+  tbody {
+      @include v.flexbox(column, flex-start, space-between);
+      tr {
+          @include v.flexbox(row, space-between, center);
+      }
+  }
+
+}
