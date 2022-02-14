@@ -1,0 +1,12 @@
+@use "../_variables"as v;
+
+.not-found {
+    @include v.flexbox(column, flex-start, center);
+    padding: 5%;
+}
+
+.back-home {
+    color: v.$grayGreen;
+    text-decoration: none;
+    font-size: 150%;
+}

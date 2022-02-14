@@ -1,0 +1,7 @@
+@use "../_variables"as v;
+
+.loading {
+    @include v.flexbox(column, flex-start, center);
+    padding: 5%;
+    width: 100%;
+}
