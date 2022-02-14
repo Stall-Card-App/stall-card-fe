@@ -5,15 +5,20 @@
   //box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
   border-radius: 20px;
   padding: 1.5em;
+  display: flex;
+  flex-direction: column;
 
   h3 {
     margin: 0em;
   }
   
   .info-container {
+    flex: 1;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    align-items: center;
+    margin-top: 1em;
   }
 
   .overview-stat {
@@ -37,7 +42,7 @@
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 1000px) {
   .horse-overview {
     grid-column: 1 / 2;
   }
