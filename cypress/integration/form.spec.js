@@ -10,6 +10,7 @@ describe('Form', () => {
       aliasMutation(req, 'addOwner')
       aliasMutation(req, 'addFarrier')
       aliasMutation(req, 'addVet')
+      aliasMutation(req, 'updateHorse')
 
       if (hasOperationName(req, 'fetchHorses')) {
         req.reply({
@@ -46,6 +47,10 @@ describe('Form', () => {
       } else if (hasOperationName(req, 'addVet')) {
         req.reply({
           fixture: 'addVet.json'
+        }) 
+      } else if (hasOperationName(req, 'updateHorse')) {
+        req.reply({
+          fixture: 'oneHorse.json'
         }) 
       } 
     })
@@ -176,7 +181,21 @@ describe('Form', () => {
         cy.wrap(res).should('have.property', 'phoneNumber', '15551488')
       })
       cy.get('.submit-button').click()
+    })
 
-
+    it('should edit an existing horse', () => {
+      cy.contains('All Horses').click()
+      cy.get('.horse-card').first().click()
+      cy.get('.new-horse-button').click()
+      cy.get('#name').should('have.value', 'Test Horsey Cypress')
+      .click().clear().type('Billy').should('have.value', 'Billy')
+      cy.get('.next-button').click()
+      cy.get('.next-button').click()
+      cy.get('.submit-button').click()
+      cy.wait('@gqlupdateHorseMutation')
+        .its('request.body.variables.input.params')
+        .then(res => {
+          cy.wrap(res).should('have.property', 'name', 'Billy')
+        })
     })
 })
