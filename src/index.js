@@ -10,10 +10,7 @@ import {
   createHttpLink,
   InMemoryCache
 } from '@apollo/client';
-
-// const httpLink = createHttpLink({
-//   uri: 'https://graphqlzero.almansi.me/api'
-// });
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 const currURI = 'https://aqueous-savannah-80171.herokuapp.com/graphql';
 
@@ -36,6 +33,8 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+serviceWorkerRegistration.register();
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
