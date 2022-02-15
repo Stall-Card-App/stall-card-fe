@@ -1,0 +1,11 @@
+{
+  "data": {
+      "addFarrier": {
+          "farrier": {
+              "id": "6",
+              "name": "Test Farrier",
+              "phoneNumber": "12345678911"
+          }
+      }
+  }
+}

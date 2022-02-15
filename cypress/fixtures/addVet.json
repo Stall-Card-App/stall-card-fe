@@ -1,0 +1,11 @@
+{
+  "data": {
+      "addVet": {
+          "vet": {
+              "id": "8",
+              "name": "Test Vet",
+              "phoneNumber": "12345678911"
+          }
+      }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "data": {
+      "fetchOwners": [
+          {
+              "id": "2",
+              "name": "Test Owner Cypress",
+              "phoneNumber": "12345678911"
+          },
+          {
+              "id": "5",
+              "name": "Sally Smith",
+              "phoneNumber": "14558796"
+          },
+          {
+              "id": "4",
+              "name": "Sally",
+              "phoneNumber": "Burns"
+          },
+          {
+              "id": "3",
+              "name": "Harry Ownsalot",
+              "phoneNumber": "15556987"
+          },
+          {
+              "id": "7",
+              "name": "Bloppy Owner",
+              "phoneNumber": "15558888"
+          },
+          {
+              "id": "6",
+              "name": "Barb Bluth",
+              "phoneNumber": "14445687"
+          }
+      ]
+  }
+}

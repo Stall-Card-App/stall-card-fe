@@ -15,7 +15,7 @@ import {
 //   uri: 'https://graphqlzero.almansi.me/api'
 // });
 
-const currURI = (process.env.NODE_ENV === 'development') ? '/graphql' : 'https://aqueous-savannah-80171.herokuapp.com/graphql';
+const currURI = 'https://aqueous-savannah-80171.herokuapp.com/graphql';
 
 const httpLink = createHttpLink({
 uri: currURI
