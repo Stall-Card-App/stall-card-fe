@@ -10,10 +10,9 @@ function WeatherWidget() {
     fetch("https://aqueous-savannah-80171.herokuapp.com/forecasts?location=denver, co")
     .then(response => response.json())
     .then(data => {console.log(data) 
-      setForecast(data)})
-    // .then(console.log(forecast, "state"))
+      setForecast(data.data.attributes)})
+    .catch(error => console.log(error))
   },[])
-console.log(forecast, "state");
 
   return ( 
     <section className='weather-widget'>
