@@ -31,7 +31,7 @@ function Form({currentHorse}) {
     farrierId: 0,
     barnId: 2
   };
-  
+
   const [inputs, setInputs] = useState(initialInputsState);
   const [formPage, setFormPage] = useState(1);
 
@@ -47,6 +47,26 @@ function Form({currentHorse}) {
       newInputs[e.target.id] = e.target.value;
     }
     setInputs(newInputs);
+  }
+
+  const handleImageUpload = () => {
+     const [image, setImage ] = useState("");
+      const [ url, setUrl ] = useState("");
+      const uploadImage = () => {
+      const data = new FormData()
+      data.append("file", image)
+      data.append("upload_preset", "tutorial")
+      data.append("cloud_name","breellz")
+      fetch("  https://api.cloudinary.com/v1_1/breellz/image/upload",{
+      method:"post",
+      body: data
+      })
+      .then(resp => resp.json())
+      .then(data => {
+      setUrl(data.url)
+      })
+      .catch(err => console.log(err))
+    }
   }
 
   const handleSubmit = (e) => {
