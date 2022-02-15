@@ -6,20 +6,20 @@ function Overview() {
       <h3>Overview</h3>
       <div className='info-container'>
         <article className='overview-stat'>
-          <p className='stat-big'>74</p>
-          <p className='stat-small'>/112 stalls occupied</p>
+          <p className='stat-big'>40</p>
+          <p className='stat-small'>Property Capacity</p>
         </article>
         <article className='overview-stat'>
-          <p className='stat-big'>14</p>
-          <p className='stat-small'>staff members</p>
+          <p className='stat-big'>24</p>
+          <p className='stat-small'>Stalled Horses</p>
         </article>
         <article className='overview-stat'>
-          <p className='stat-big'>3</p>
-          <p className='stat-small'>invoices due</p>
+          <p className='stat-big'>12</p>
+          <p className='stat-small'>Pasture Horses</p>
         </article>
         <article className='overview-stat'>
-          <p className='stat-big'>2</p>
-          <p className='stat-small'>out sick idk</p>
+          <p className='stat-big'>4</p>
+          <p className='stat-small'>Board Vacancies</p>
         </article>
       </div>
     </section>

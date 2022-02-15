@@ -1,0 +1,11 @@
+{
+  "data": {
+      "addOwner": {
+          "owner": {
+              "id": "8",
+              "name": "Test Owner",
+              "phoneNumber": "12345678911"
+          }
+      }
+  }
+}
