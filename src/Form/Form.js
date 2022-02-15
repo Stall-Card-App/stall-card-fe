@@ -34,6 +34,8 @@ function Form({currentHorse}) {
 
   const [inputs, setInputs] = useState(initialInputsState);
   const [formPage, setFormPage] = useState(1);
+  const [image, setImage ] = useState("");
+  const [ url, setUrl ] = useState("");
 
   const [addHorse] = useMutation(addHorseQuery);
   const [updateHorse] = useMutation(updateHorseQuery);
@@ -50,23 +52,19 @@ function Form({currentHorse}) {
   }
 
   const handleImageUpload = () => {
-     const [image, setImage ] = useState("");
-      const [ url, setUrl ] = useState("");
-      const uploadImage = () => {
-      const data = new FormData()
-      data.append("file", image)
-      data.append("upload_preset", "tutorial")
-      data.append("cloud_name","breellz")
-      fetch("  https://api.cloudinary.com/v1_1/breellz/image/upload",{
+    const photoFile = new FormData()
+    photoFile.append("file", image)
+    photoFile.append("upload_preset", "unsigned")
+    photoFile.append("cloud_name","careid")
+    fetch("https://api.cloudinary.com/v1_1/careid/image/upload",{
       method:"post",
-      body: data
-      })
-      .then(resp => resp.json())
+      body: photoFile
+    })
+      .then(response => response.json())
       .then(data => {
       setUrl(data.url)
-      })
-      .catch(err => console.log(err))
-    }
+    })
+    .catch(err => console.log(err))
   }
 
   const handleSubmit = (e) => {
