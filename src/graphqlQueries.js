@@ -202,4 +202,31 @@ mutation UpdateHorse($input: UpdateHorseInput!) {
 }
 `
 
-export {dummyQuery, fetchAllHorses, fetchHorse, addHorseQuery, fetchVet, fetchFarrier, fetchOwner, addFarrierQuery, addVetQuery, addOwnerQuery, fetchAllFarriers, fetchAllOwners, fetchAllVets, updateHorseQuery};
+const destroyHorseQuery = gql`
+mutation DestroyHorse($input: DestroyHorseInput!) {
+  destroyHorse(input: $input) {
+    horse {
+      id
+      name
+      stallNumber
+      age
+      breed
+      sex
+      color
+      markings
+      notes
+      amFeed
+      pmFeed
+      supplements
+      turnout
+      blanketingTemp
+      barnId
+      ownerId
+      vetId
+      farrierId
+    }
+  }
+}
+`
+
+export {dummyQuery, fetchAllHorses, fetchHorse, addHorseQuery, fetchVet, fetchFarrier, fetchOwner, addFarrierQuery, addVetQuery, addOwnerQuery, fetchAllFarriers, fetchAllOwners, fetchAllVets, updateHorseQuery, destroyHorseQuery};
