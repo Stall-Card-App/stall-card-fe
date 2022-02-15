@@ -1,5 +1,5 @@
 import './WeatherWidget.scss';
-import "../HourWeather/HourWeather";
+import HourWeather from "../HourWeather/HourWeather";
 import { useState, useEffect } from "react";
 import weatherIcons from "./icons.js";
 import Loading from "../Loading/Loading";
@@ -33,6 +33,7 @@ function WeatherWidget() {
         {forecast.hourly_weather.map((hour) => {
           return (
             <HourWeather 
+              key={hour.time}
               time={hour.time}
               temperature={hour.temperature}
               conditions={hour.conditions}
