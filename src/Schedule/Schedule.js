@@ -1,18 +1,20 @@
 import './Schedule.scss'
 
 function Schedule() {
+  const date = new Date(Date.now());
+  const today = date.toDateString();
   return ( 
     <section className='schedule'>
-          <h3>Schedule</h3>
+          <h3>{`Schedule: ${today}`}</h3>
           <table>
             <tbody>
               <tr>
                 <td>AM Feed / Turnout</td>
                 <td>Natalie M.</td>
               </tr>
-              <tr>
-                <td>PM Feed / Turnout</td>
-                <td>Em J.</td>
+               <tr>
+                <td>Stall Cleaner</td>
+                <td>Julie P.</td>
               </tr>
               <tr>
                 <td>9:00am</td>
@@ -45,6 +47,10 @@ function Schedule() {
                 <tr>
                 <td>4:30pm</td>
                 <td>Rachel G. Lesson</td>
+              </tr>
+              <tr>
+                <td>PM Feed / Turnout</td>
+                <td>Em J.</td>
               </tr>
             </tbody>
           </table>
