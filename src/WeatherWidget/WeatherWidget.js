@@ -1,7 +1,8 @@
 import './WeatherWidget.scss';
-import cloudy from '../assets/cloudy.svg';
+import "../HourWeather/HourWeather";
 import { useState, useEffect } from "react";
 import weatherIcons from "./icons.js";
+import Loading from "../Loading/Loading";
 
 function WeatherWidget() {
   const [forecast, setForecast] = useState(null);
@@ -16,6 +17,7 @@ function WeatherWidget() {
 
   return ( 
   <div>
+    {!forecast && <Loading />}
     {forecast && 
     <section className='weather-widget'>
     <h3>Today's Weather</h3>
@@ -24,11 +26,21 @@ function WeatherWidget() {
         <img src={weatherIcons[forecast.current_weather.icon]} />
         <div className='current-container'>
           <p className='current-temp'>{`${Math.round(forecast.current_weather.temperature)}°F`}</p>
-          <p className='current-conditions'>Cloudy</p>
+          <p className='current-conditions'>{forecast.current_weather.conditions}</p>
         </div>
       </div>
       <div className='hourly-weather-container'>
-        <article className='hourly-weather'>
+        {forecast.hourly_weather.map((hour) => {
+          return (
+            <HourWeather 
+              time={hour.time}
+              temperature={hour.temperature}
+              conditions={hour.conditions}
+              icon={hour.icon}
+            />
+          )
+        })}
+        {/* <article className='hourly-weather'>
           <p>9AM</p>
           <img src={cloudy} />
           <p>77°</p>
@@ -67,7 +79,7 @@ function WeatherWidget() {
           <p>4PM</p>
           <img src={cloudy} />
           <p>77°</p>
-        </article>
+        </article> */}
       </div>
     </div>
   </section>}
