@@ -93,7 +93,7 @@ describe('Form', () => {
       cy.get('#farrierId').should('contain', 'Test Farrier Cypress')
     })
 
-    xit('should be able to submit a new horse', () => {
+    it('should be able to submit a new horse', () => {
       cy.get('.new-horse-button').click()
       cy.get('#name').click().type('Billy')
       cy.get('#photo').attachFile('bleppyImg.png')
