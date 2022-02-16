@@ -1,12 +1,32 @@
 @use "../_variables" as v;
 
 .horse-grid {
-    @include v.flexbox(row, flex-start, flex-start);
-    flex-wrap: wrap;
-    margin-top: calc(90px + 1.5em);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5em;
+    margin-top: 90px;
+    padding: 1.5em;
 
     a {
         text-decoration: none;
         color: black;
+    }
+}
+@media screen and (min-width: 1540px) {
+    .horse-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .horse-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .horse-grid {
+        grid-template-columns: repeat(3, 1fr);
+        margin-top: 0px;
     }
 }
