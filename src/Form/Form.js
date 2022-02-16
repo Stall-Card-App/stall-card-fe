@@ -35,8 +35,6 @@ function Form({currentHorse}) {
 
   const [inputs, setInputs] = useState(initialInputsState);
   const [formPage, setFormPage] = useState(1);
-  const [image, setImage ] = useState("");
-  const [ url, setUrl ] = useState("");
   const [isComplete, setIsComplete] = useState(false);
 
   const [addHorse] = useMutation(addHorseQuery);
