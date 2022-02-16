@@ -22,7 +22,7 @@ function AllHorses() {
         return <Link to={`/horses/${horse.id}`} key={horse.id}>
         <HorseCard 
           id={horse.id}
-          photo={mockData.data.horses[1].photo}
+          photo={horse.photo}
           name={horse.name}
           stallNumber={horse.stallNumber}
           amFeed = {horse.amFeed}
