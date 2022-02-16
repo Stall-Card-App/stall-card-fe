@@ -1,19 +1,24 @@
 @use "../_variables"as v;
 
 .horse-card {
-    @include v.flexbox(column, flex-start, center);
-    width: 22em;
-    padding: 1em;
 
     img {
-        width: 75%;
+        width: 100%;
+        border-radius: 10px;
     }   
 
     p {
         font-size: 125%;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        
+    }
+
+    table {
+        width: 75%;
+        text-align: left;
     }
 }
-
 
 .horse-info {
     font-size: 90%;
