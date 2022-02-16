@@ -19,8 +19,7 @@ function AllHorses() {
     <div className="horse-grid">
       {loading && <Loading />}
       {allHorses?.length > 0 && allHorses.map((horse) => {
-        return <Link to={`/horses/${horse.id}`} key={horse.id}>
-        <HorseCard 
+        return <HorseCard 
           id={horse.id}
           photo={mockData.data.horses[1].photo}
           name={horse.name}
@@ -29,7 +28,6 @@ function AllHorses() {
           pmFeed = {horse.pmFeed}
           turnout = {horse.turnout}
         />
-      </Link>
       })
       }
     </div>
