@@ -35,7 +35,7 @@ function HorseProfile() {
   });
 
   const removeHorse = () => {
-    if (window.confirm('Are you sure you want to delete this horse?')) {
+    if (window.confirm('Are you sure you want to delete this horse?') === true) {
       destroyHorse({
         variables: {input: {id: Number(horseId)}}
       })

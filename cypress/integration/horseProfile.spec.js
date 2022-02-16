@@ -65,4 +65,10 @@ describe('Horse profile', () => {
         })
       cy.url().should('not.contain', '5')
     })
+
+    it('should be able to cancel a horse deletion', () => {
+      cy.get('.destroy-button').click()
+      cy.on('window:confirm', () => false);
+      cy.url().should('contain', '5')
+    })
 })
