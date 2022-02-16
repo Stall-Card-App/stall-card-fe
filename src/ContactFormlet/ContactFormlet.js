@@ -50,11 +50,7 @@ function ContactFormlet({contactType, mutationQuery, queryName, resType, updateC
   const handleContactChange = (e) => {
     e.preventDefault();
     const newInputs = {...contact};
-    if (e.target.type === 'number') {
-      newInputs[e.target.id] = Number(e.target.value);
-    } else {
       newInputs[e.target.id] = e.target.value;
-    }
     setContact(newInputs);
   }
 

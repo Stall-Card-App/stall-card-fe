@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 import { aliasQuery, aliasMutation, hasOperationName } from '../utils/graphql-test'
 
-describe('Sidebar navigation', () => {
+describe('Sidebar and misc navigation', () => {
   beforeEach(() => {
     cy.intercept('POST', 'https://aqueous-savannah-80171.herokuapp.com/graphql', (req) => {
       aliasQuery(req, 'fetchHorses')
@@ -70,6 +70,22 @@ describe('Sidebar navigation', () => {
       cy.url().should('contain', '/horses')
       cy.get('.horse-grid').should('exist')
       cy.contains('Schedule').click()
+      cy.url().should('contain', '/')
+      cy.get('.Dashboard').should('exist')
+    })
+
+    it('should return to dashboard if you select schedul', () => {
+      cy.get('.sidebar-container').contains('All Horses').click()
+      cy.url().should('contain', '/horses')
+      cy.get('.sidebar-container').contains('Schedule').click()
+      cy.url().should('contain', '/')
+      cy.get('.Dashboard').should('exist')
+    })
+
+    it('should present a 404 page if the URL is bad', () => {
+      cy.visit('http://localhost:3000/anything-here')
+      cy.contains('Sorry, something went wrong!').should('exist')
+      cy.contains('Return to the Barn').click()
       cy.url().should('contain', '/')
       cy.get('.Dashboard').should('exist')
     })

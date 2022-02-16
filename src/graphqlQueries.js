@@ -11,6 +11,7 @@ const fetchAllHorses = gql`
 query {
   fetchHorses {
     id
+    photo
     name
     stallNumber
     age
@@ -35,6 +36,7 @@ const fetchHorse = gql`
 query fetchHorse($id: ID!) {
   fetchHorse(id: $id) {
     id
+    photo
     name
     stallNumber
     age
@@ -60,6 +62,7 @@ mutation AddHorse($input: AddHorseInput!) {
   addHorse(input: $input) {
     horse {
       id
+      photo
       name
       stallNumber
       age
@@ -180,6 +183,7 @@ mutation UpdateHorse($input: UpdateHorseInput!) {
   updateHorse(input: $input) {
     horse {
       id
+      photo
       name
       stallNumber
       age
@@ -207,6 +211,7 @@ mutation DestroyHorse($input: DestroyHorseInput!) {
   destroyHorse(input: $input) {
     horse {
       id
+      photo
       name
       stallNumber
       age

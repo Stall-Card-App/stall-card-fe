@@ -1,17 +1,22 @@
 /// <reference types="Cypress" />
-import { aliasQuery, hasOperationName } from '../utils/graphql-test'
+import { aliasQuery, aliasMutation, hasOperationName } from '../utils/graphql-test'
 
 describe('Horse profile', () => {
   beforeEach(() => {
     cy.intercept('POST', 'https://aqueous-savannah-80171.herokuapp.com/graphql', (req) => {
       aliasQuery(req, 'fetchHorses')
       aliasQuery(req, 'fetchHorse')
+      aliasMutation(req, 'destroyHorse')
 
       if (hasOperationName(req, 'fetchHorses')) {
         req.reply({
           fixture: 'allHorses.json'
         })
       } else if (hasOperationName(req, 'fetchHorse')) {
+        req.reply({
+          fixture: 'oneHorse.json'
+        })
+      } else if (hasOperationName(req, 'destroyHorse')) {
         req.reply({
           fixture: 'oneHorse.json'
         })
@@ -49,5 +54,21 @@ describe('Horse profile', () => {
     it('should return to all horses page', () => {
       cy.get('.back-button').click()
       cy.url().should('not.contain', '5')
+    })
+
+    it('should be able to delete a horse', () => {
+      cy.get('.destroy-button').click()
+      cy.wait('@gqldestroyHorseMutation')
+        .its('request.body.variables.input')
+        .then(res => {
+          cy.wrap(res).should('have.property', 'id', 5)
+        })
+      cy.url().should('not.contain', '5')
+    })
+
+    it('should be able to cancel a horse deletion', () => {
+      cy.get('.destroy-button').click()
+      cy.on('window:confirm', () => false);
+      cy.url().should('contain', '5')
     })
 })

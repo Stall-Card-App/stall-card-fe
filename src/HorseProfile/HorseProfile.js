@@ -35,7 +35,7 @@ function HorseProfile() {
   });
 
   const removeHorse = () => {
-    if (window.confirm('Are you sure you want to delete this horse?')) {
+    if (window.confirm('Are you sure you want to delete this horse?') === true) {
       destroyHorse({
         variables: {input: {id: Number(horseId)}}
       })
@@ -72,7 +72,7 @@ function HorseProfile() {
       <button className='destroy-button' onClick={() => removeHorse() }>
         <i className="fas fa-trash"></i>
       </button>
-        <img className="horse-photo" src={`${mockData.data.horses[1].photo}`} alt={`Photo of ${horse.name}`} />
+        <img className="horse-photo" src={`${horse.photo}`} alt={`Photo of ${horse.name}`} />
         <section className="horse-details">
           <h2>{horse.name}</h2>
           <div className="info-tables">
