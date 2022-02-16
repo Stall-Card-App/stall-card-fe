@@ -22,7 +22,7 @@ function App() {
     <main>
       {isTabletOrMobile ? '' : <Sidebar updateCurrentPage={updateCurrentPage}/>}
       <section className='main-section'>
-      {isTabletOrMobile ? <MobileNav updateCurrentPage={updateCurrentPage} /> : <Header />}
+      {isTabletOrMobile ? <MobileNav updateCurrentPage={updateCurrentPage} /> : <Header currentPage={currentPage}/>}
       {isTabletOrMobile && <h1 className="page-title">{currentPage}</h1>}
         <Routes>
           <Route path='*' element={<NotFound />} />
