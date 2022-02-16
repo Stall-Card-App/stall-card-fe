@@ -3,6 +3,14 @@ import { aliasQuery, aliasMutation, hasOperationName } from '../utils/graphql-te
 
 describe('Form', () => {
   beforeEach(() => {
+    cy.intercept('POST', 'https://api.cloudinary.com/v1_1/careid/image/upload', (req) => {
+     req.reply({
+       data: {
+         url: 'http://res.cloudinary.com/careid/image/upload/v1644978347/rfrartphslox5ij3oy6l.jpg'
+       }
+     })
+
+    })
     cy.intercept('POST', 'https://aqueous-savannah-80171.herokuapp.com/graphql', (req) => {
       aliasQuery(req, 'fetchHorses')
       aliasQuery(req, 'fetchHorse')
@@ -85,9 +93,11 @@ describe('Form', () => {
       cy.get('#farrierId').should('contain', 'Test Farrier Cypress')
     })
 
-    it('should be able to submit a new horse', () => {
+    xit('should be able to submit a new horse', () => {
       cy.get('.new-horse-button').click()
       cy.get('#name').click().type('Billy')
+      cy.get('#photo').attachFile('bleppyImg.png')
+      cy.wait(2000)
       cy.get('#stallNumber').click().type('42')
       cy.get('#age').click().type('27')
       cy.get('#breed').click().type('Appaloosa')
@@ -130,9 +140,23 @@ describe('Form', () => {
         })
     })
 
+    it('should log an error for image upload', () => {
+    cy.intercept('POST', 'https://api.cloudinary.com/v1_1/careid/image/upload', (req) => {
+     req.reply({
+       statusCode: 400
+     })
+    }).as('error-message')
+    cy.get('.new-horse-button').click()
+    cy.get('#name').click().type('Billy')
+    cy.get('#photo').attachFile('bleppyImg.png')
+    cy.wait('@error-message').its('response.statusCode').should('eql', 400)
+    })
+
     it('should be able to create new contacts', () => {
       cy.get('.new-horse-button').click()
       cy.get('#name').click().type('Billy')
+      cy.get('#photo').attachFile('bleppyImg.png')
+      cy.wait(2000)
       cy.get('#stallNumber').click().type('42')
       cy.get('#age').click().type('27')
       cy.get('#breed').click().type('Appaloosa')
@@ -159,6 +183,7 @@ describe('Form', () => {
           cy.wrap(res).should('have.property', 'name', 'Horse Owner')
           cy.wrap(res).should('have.property', 'phoneNumber', '15551478')
         })
+      cy.get('#ownerId').select('Sally Smith')
       cy.get('#farrierId').select('New contact')
       cy.get('#name').click().type('Horse Farrier')
       cy.get('#phoneNumber').click().type('15551465')
@@ -169,6 +194,7 @@ describe('Form', () => {
         cy.wrap(res).should('have.property', 'name', 'Horse Farrier')
         cy.wrap(res).should('have.property', 'phoneNumber', '15551465')
       })
+      cy.get('#farrierId').select('Jo Smith')
 
       cy.get('#vetId').select('New contact')
       cy.get('#name').click().type('Horse Vet')
@@ -180,6 +206,7 @@ describe('Form', () => {
         cy.wrap(res).should('have.property', 'name', 'Horse Vet')
         cy.wrap(res).should('have.property', 'phoneNumber', '15551488')
       })
+      cy.get('#vetId').select('Good Vet')
       cy.get('.submit-button').click()
     })
 
@@ -197,5 +224,15 @@ describe('Form', () => {
         .then(res => {
           cy.wrap(res).should('have.property', 'name', 'Billy')
         })
+    })
+
+    it('should navigate backwards through form', () => {
+      cy.get('.new-horse-button').click()
+      cy.get('.next-button').click()
+      cy.get('.next-button').click()
+      cy.get('#ownerId').should('exist')
+      cy.get('.back-button').click()
+      cy.get('.back-button').click()
+      cy.get('#name').should('exist')
     })
 })
