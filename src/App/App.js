@@ -27,8 +27,8 @@ function App() {
         <Routes>
           <Route path='*' element={<NotFound />} />
           <Route path='/' element={<Dashboard />} />
-          <Route path='/horses' element={<AllHorses />} />
-          <Route path='/horses/:id' element={<HorseProfile />} />
+          <Route path='/horses' element={<AllHorses updateCurrentPage={updateCurrentPage} />} />
+          <Route path='/horses/:id' element={<HorseProfile updateCurrentPage={updateCurrentPage} />} />
         </Routes>
       </section>
 
