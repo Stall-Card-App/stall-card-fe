@@ -18,3 +18,9 @@
     grid-template-columns: 1fr !important;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .Dashboard {
+    margin-top: 1.5em;
+  }
+}
