@@ -10,9 +10,11 @@ import { useQuery } from '@apollo/client';
 function AllHorses() {
   const [allHorses, setAllHorses] = useState([])
 
-  const { data, loading, error } = useQuery(fetchAllHorses, {
+    const { data, loading, error } = useQuery(fetchAllHorses, {
     onCompleted: data => {
-      setAllHorses(() => data.fetchHorses)
+      console.log(data.fetchHorses)
+      let currHorses = [...data.fetchHorses]
+      setAllHorses(() => currHorses.sort((a, b) => a.stallNumber - b.stallNumber))
     }})
 
   return (
@@ -22,8 +24,8 @@ function AllHorses() {
         return <Link to={`/horses/${horse.id}`} key={horse.id}>
         <HorseCard 
           id={horse.id}
-          photo={horse.photo}
           name={horse.name}
+          photo={horse.photo}
           stallNumber={horse.stallNumber}
           amFeed = {horse.amFeed}
           pmFeed = {horse.pmFeed}
