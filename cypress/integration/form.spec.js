@@ -62,7 +62,7 @@ describe('Form', () => {
         }) 
       } 
     })
-    cy.visit('http://localhost:3000/')
+    cy.visit('http://localhost:3000/horses')
     
   })
     
@@ -212,8 +212,8 @@ describe('Form', () => {
 
     it('should edit an existing horse', () => {
       cy.contains('All Horses').click()
-      cy.get('.horse-card').first().click()
-      cy.get('.new-horse-button').click()
+      cy.get('.horse-card').first().get('img[alt="Photo of Test Horsey cypress"]').click()
+      cy.get('.edit-horse-button').click()
       cy.get('#name').should('have.value', 'Test Horsey Cypress')
       .click().clear().type('Billy').should('have.value', 'Billy')
       cy.get('.next-button').click()

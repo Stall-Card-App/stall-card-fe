@@ -36,7 +36,7 @@ describe('All horses page', () => {
     })
     
     it('should bring you to a horse page after you select a horse', () => {
-      cy.get('.horse-card').first().click()
+      cy.get('img[alt="Photo of Test Horsey cypress"]').click()
       cy.url().should('contain', 'horses/5')
     })
 })
