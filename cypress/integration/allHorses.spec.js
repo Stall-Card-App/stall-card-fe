@@ -38,5 +38,21 @@ describe('All horses page', () => {
     it('should bring you to a horse page after you select a horse', () => {
       cy.get('img[alt="Photo of Test Horsey cypress"]').click()
       cy.url().should('contain', 'horses/5')
+    })   
+})
+
+describe('allHorses network Err', () => {
+  it('should should an error if there is a network error', () => {
+    cy.intercept('POST', 'https://aqueous-savannah-80171.herokuapp.com/graphql', (req) => {
+      aliasQuery(req, 'fetchHorses')
+
+      if (hasOperationName(req, 'fetchHorses')) {
+        req.reply({
+          error: 'It did not work, sorry!'
+        })
+      } 
     })
+    cy.visit('http://localhost:3000/horses')
+    cy.get('.not-found').should('exist')
+  })
 })
