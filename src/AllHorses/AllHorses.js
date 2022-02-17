@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./AllHorses.scss";
 import { Link } from 'react-router-dom';
-import mockData from "../mockData";
 import HorseCard from "../HorseCard/HorseCard";
 import Loading from "../Loading/Loading.js";
+import NotFound from "../NotFound/NotFound";
 import { fetchAllHorses } from '../graphqlQueries.js';
 import { useQuery } from '@apollo/client';
 
@@ -12,7 +12,6 @@ function AllHorses() {
 
     const { data, loading, error } = useQuery(fetchAllHorses, {
     onCompleted: data => {
-      console.log(data.fetchHorses)
       let currHorses = [...data.fetchHorses]
       setAllHorses(() => currHorses.sort((a, b) => a.stallNumber - b.stallNumber))
     }})
@@ -20,6 +19,7 @@ function AllHorses() {
   return (
     <div className="horse-grid">
       {loading && <Loading />}
+      {error && <NotFound />}
       {allHorses?.length > 0 && allHorses.map((horse) => {
         return <Link to={`/horses/${horse.id}`} key={horse.id}>
         <HorseCard 
@@ -33,9 +33,9 @@ function AllHorses() {
         />
       </Link>
       })
-      }
+    }
     </div>
-    )
+  )
 }
 
 export default AllHorses;
