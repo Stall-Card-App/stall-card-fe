@@ -4,14 +4,27 @@
   width: 100%;
   padding-left: 10%;
   table {
-      width: 60%;
+    //padding-left: 0em;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 300px;
+    //margin: 10%;
+
   }
   
-  tbody {
-      @include v.flexbox(column, flex-start, space-between);
-      tr {
-          @include v.flexbox(row, space-between, center);
-      }
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #e9e9e9;
+  }
+
+  td:first-child {
+      font-weight:bold;
   }
 
 }
