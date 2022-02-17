@@ -187,20 +187,6 @@ function Form({currentHorse}) {
                   onChange={(e) => handleInputChange(e)}
                   size="small"
                 />
-                {/* <InputLabel id="sex">Sex</InputLabel>
-                <Select
-                  sx={{ minWidth: '100%' }}
-                  labelId="sex"
-                  id="sex"
-                  value={inputs.sex}
-                  label="Sex"
-                  onChange={(e) => handleInputChange(e)}
-                  size="small"
-                >
-                  <MenuItem value={"Male"}>Male</MenuItem>
-                  <MenuItem value={"Female"}>Female</MenuItem>
-
-                </Select> */}
               </div>
               <div className="input-container">
                 <TextField
