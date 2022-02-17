@@ -16,7 +16,7 @@ function WeatherWidget() {
   },[])
 
   return ( 
-  <div>
+  <div className='weather-widget-container'>
     {!forecast && <Loading />}
     {forecast && 
     <section className='weather-widget'>

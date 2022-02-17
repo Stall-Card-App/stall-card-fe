@@ -7,6 +7,7 @@ import NotFound from "../NotFound/NotFound";
 import { fetchAllHorses } from '../graphqlQueries.js';
 import { useQuery } from '@apollo/client';
 import MicroModal from 'micromodal';
+import Form from "../Form/Form";
 
 function AllHorses( { updateCurrentPage }) {
   MicroModal.init();
@@ -20,6 +21,7 @@ function AllHorses( { updateCurrentPage }) {
 
   return (
     <div className="horse-grid">
+      <Form />
       {loading && <Loading />}
       {error && <NotFound />}
       {allHorses?.length > 0 && allHorses.map((horse) => {
