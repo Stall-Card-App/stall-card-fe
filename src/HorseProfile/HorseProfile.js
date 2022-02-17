@@ -9,7 +9,8 @@ import Form from "../Form/Form";
 import Loading from "../Loading/Loading";
 import MicroModal from 'micromodal';
 
-function HorseProfile() {
+function HorseProfile( { updateCurrentPage }) {
+  MicroModal.init();
   const [horse, setHorse] = useState('')
   const [contacts, setContacts] = useState({
     farrier: undefined,
@@ -48,63 +49,62 @@ function HorseProfile() {
   return ( 
     <section className="details-page">
       {loading && <Loading />}
+      <Link to={"/horses"} className="back-button" onClick={() => updateCurrentPage('All Horses')}><i class="fas fa-chevron-left"></i> Return to All Horses</Link>
       {horse && <div className="horse-profile">
       <Form currentHorse={horse}/>
-      <button className='new-horse-button' onClick={() => MicroModal.show('modal-1')}>
-        <i className="fas fa-plus"></i>
+      <button className='edit-horse-button' onClick={() => MicroModal.show('modal-1')}>
+        <i class="fas fa-pencil-alt"></i>
       </button>
         <img className="horse-photo" src={`${mockData.data.horses[1].photo}`} alt={`Photo of ${horse.name}`} />
         <section className="horse-details">
-          <h2>{horse.name}</h2>
+          <h3>{horse.name}</h3>
           <div className="info-tables">
-          <table>
-            <tbody>
+            <table>
               <tr>
-                <th>Stall:</th>
+                <td>Stall:</td>
                 <td>{horse.stallNumber}</td>
               </tr>
               <tr>
-                <th>Breed:</th>
+                <td>Breed:</td>
                 <td>{horse.breed}</td>
               </tr>
               <tr>
-                <th>Sex:</th>
+                <td>Sex:</td>
                 <td>{horse.sex}</td>
               </tr>
               <tr>
-                <th>Age:</th>
+                <td>Age:</td>
                 <td>{horse.age}</td>
               </tr>
               <tr>
-                <th>Color:</th>
+                <td>Color:</td>
                 <td>{horse.color}</td>
               </tr>
               <tr>
-                <th>Markings:</th>
+                <td>Markings:</td>
                 <td>{horse.markings}</td>
               </tr>
               <tr>
-                <th>AM Feed:</th>
+                <td>AM Feed:</td>
                 <td>{horse.amFeed}</td>
               </tr>
               <tr>
-                <th>PM Feed:</th>
+                <td>PM Feed:</td>
                 <td>{horse.pmFeed}</td>
               </tr>
               <tr>
-                <th>Supplements:</th>
+                <td>Supplements:</td>
                 <td>{horse.supplements}</td>
               </tr>
               <tr>
-                <th>Turnout:</th>
+                <td>Turnout:</td>
                 <td>{horse.turnout}</td>
               </tr>
               <tr>
-                <th>Blanketing Temperature:</th>
+                <td>Blanketing Temperature:</td>
                 <td>{horse.blanketingTemp}</td>
               </tr>
-            </tbody>
-          </table>
+            </table>
           <div className="all-contacts">
             <h3>Important Contacts:</h3>
                 <ContactDetails query={fetchOwner} id={horse.ownerId} resName={'fetchOwner'} type="Owner" />
@@ -114,7 +114,6 @@ function HorseProfile() {
             </div>
         </section>
       </div>}
-      <Link to={"/horses"} className="back-button">⬅ Return to All Horses</Link>
     </section>
    );
 }
