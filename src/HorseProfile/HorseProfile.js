@@ -76,6 +76,7 @@ function HorseProfile( { updateCurrentPage }) {
         <img className="horse-photo" src={`${horse.photo}`} alt={`Photo of ${horse.name}`} />
         <section className="horse-details">
           <h3>{horse.name}</h3>
+          <img className="mobile-image" src={`${horse.photo}`} alt={`Photo of ${horse.name}`} />
           <div className="info-tables">
             <table>
               <tr>

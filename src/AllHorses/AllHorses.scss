@@ -55,3 +55,9 @@
         margin-top: 0px;
     }
 }
+
+@media screen and (max-width: 400px) {
+  .horse-grid {
+      grid-template-columns: 1fr;
+  }
+}

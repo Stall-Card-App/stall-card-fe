@@ -12,7 +12,6 @@ function Dashboard() {
     <>
       <main className='Dashboard'>
         <Form />
-        
         <WeatherWidget />
         <Schedule />
         <Overview />
