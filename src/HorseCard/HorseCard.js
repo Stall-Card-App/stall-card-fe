@@ -8,13 +8,13 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 
-function HorseCard({photo, name, stallNumber, amFeed, pmFeed, turnout, id }) {
+function HorseCard({photo, name, stallNumber, amFeed, pmFeed, turnout, id, updateCurrentPage }) {
   const [accordionOpen, setAccordionOpen] = useState(false);
 
   return ( 
     <div className="horse-card">
       {/* <p>{stallNumber}</p> */}
-      <Link to={`/horses/${id}`} key={id}>
+      <Link to={`/horses/${id}`} key={id} onClick={() => updateCurrentPage('Horse Details')}>
         <img src={photo} alt={`Photo of ${name}`} />
       </Link>
       
