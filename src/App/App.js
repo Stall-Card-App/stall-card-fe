@@ -22,13 +22,13 @@ function App() {
     <main>
       {isTabletOrMobile ? '' : <Sidebar updateCurrentPage={updateCurrentPage}/>}
       <section className='main-section'>
-      {isTabletOrMobile ? <MobileNav updateCurrentPage={updateCurrentPage} /> : <Header />}
+      {isTabletOrMobile ? <MobileNav updateCurrentPage={updateCurrentPage} /> : <Header currentPage={currentPage}/>}
       {isTabletOrMobile && <h1 className="page-title">{currentPage}</h1>}
         <Routes>
           <Route path='*' element={<NotFound />} />
           <Route path='/' element={<Dashboard />} />
-          <Route path='/horses' element={<AllHorses />} />
-          <Route path='/horses/:id' element={<HorseProfile />} />
+          <Route path='/horses' element={<AllHorses updateCurrentPage={updateCurrentPage} />} />
+          <Route path='/horses/:id' element={<HorseProfile updateCurrentPage={updateCurrentPage} />} />
         </Routes>
       </section>
 

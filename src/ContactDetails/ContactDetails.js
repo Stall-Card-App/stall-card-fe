@@ -16,11 +16,11 @@ function ContactDetails({query, id, resName, type}) {
     <table>
       <tbody>
         <tr>
-          <th>{type}:</th>
+          <td>{type}:</td>
           <td>{contact.name}</td>
         </tr>
         <tr>
-          <th>Phone:</th>
+          <td>Phone:</td>
           <td>{contact.phoneNumber}</td>
         </tr>
       </tbody>

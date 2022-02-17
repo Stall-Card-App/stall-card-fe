@@ -47,7 +47,7 @@ describe('Horse profile', () => {
     })
 
     it('should open a form', () => {
-      cy.get('.new-horse-button').click()
+      cy.get('.edit-horse-button').click()
       cy.get('form').should('exist')
     })
 

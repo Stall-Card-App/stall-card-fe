@@ -6,6 +6,7 @@
     "@apollo/client": "^3.5.8",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
+    "@mui/icons-material": "^5.4.2",
     "@mui/material": "^5.4.1",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
@@ -38,7 +39,7 @@
     "cy:run": "cypress run",
     "test": "start-server-and-test start http-get://localhost:3000 cy:run",
     "eject": "react-scripts eject",
-    "coverage": "npx nyc report --reporter=text-summary"
+    "coverage": "npx nyc report --reporter=text"
   },
   "eslintConfig": {
     "extends": [
