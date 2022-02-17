@@ -1,6 +1,8 @@
 # Stall Card
 
 ### Turing Mod 4 Capstone Project
+-[View Deployed App](https://stall-card.herokuapp.com/)
+-[Backend Repository](https://github.com/Stall-Card-App/stall_card_be)
 
 ## Table of Contents
 - [Abstract](#Abstract)
@@ -75,5 +77,7 @@ From the profile, you can **click** the yellow `edit` icon to open a form and ed
 
 ## Contributors
 - [August Reid](https://github.com/augustreid)
-- [Brian Peterson](https://github.com/bpeterson2579)
-- [Elise Beall](https://github.com/elisebeall)
+- [Eric Wang](https://github.com/ewang09)
+- [John Kiernan](https://github.com/jkiernan12)
+- [Stephanie Helm](https://github.com/stephaniemhelm)
+- [Jacob Yarborough](https://github.com/jacobyarborough)
