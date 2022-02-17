@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+# Stall Card
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Turing Mod 4 Capstone Project
+-[View Deployed App](https://stall-card.herokuapp.com/)
+-[Backend Repository](https://github.com/Stall-Card-App/stall_card_be)
 
-## Available Scripts
+## Table of Contents
+- [Abstract](#Abstract)
+- [Technologies](#Technologies)
+- [Experience](#Experience)
+- [Illustrations](#Illustrations)
+- [Install](#Install)
+- [Wins](#Wins)
+- [Challenges](#Challenges)
+- [Additions](#Additions)
+- [Contributors](#Contributors)
 
-In the project directory, you can run:
+## Abstract
+Stall Card is a progressive web app created to solve the challenges of running a large-scale horse boarding barn. Horses have very individualized care needs. These needs often change with the horse's age, health, weather, etc. Barn's with many horses and multiple employees often struggle to keep everyone up to date with these changes, and to train new employees who aren't yet familiar with every animal. 
 
-### `npm start`
+Stall Card addresses these challenges with an app designed for the barn manager. The user can add, edit, and delete a profile for each horse, which includes biographical details, feeding instructions, and important contacts. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies
+-  HTML
+-  CSS / SASS
+-  JavaScript
+-  React
+-  Hooks
+- GraphQL / Apollo
+- Cloudinary
+- PWA
+- Cypress
+- Circle CI
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Experience
+On the `Home` page, you will see a `weather widget` that displays the current weather and a forecast for the next 8 hours. You will also see a daily `schedule` that includes employee shifts, riding lessons, and appointments, and an `overview` of the number of horses on property. 
+![Home Dashboard](./src/assets/screenshots/dashFull.png)
+![Dashboard Mobile View](./src/assets/screenshots/dashSmall.png)
 
-### `npm test`
+On the left side of the screen, or at the top on mobile view, there is a navigation `menu`. Select the `All Horses` option, and you will be taken to a page with all horses currently at the stable. The horses are displayed with a photo, name, stall number, and an accordian that reveals feeding details. 
+![All Horses](./src/assets/screenshots/horsesFull.png)
+![All Horses Mobile View](./src/assets/screenshots/horsesMed.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+From the All Horses page, you can **click** the yellow `Add New Horse` button in the bottom right. This will open a `form` to fill out with all the horse's information. The form includes a button to upload a photo. The form will take you through several pages to add all necessary information, and when adding contacts, you can either select one of the existing contacts or add a new one. Once you `click` submit, the horse will be added to your barn. 
+![Form Page 1](./src/assets/screenshots/form1.png)
+![Form Page 2](./src/assets/screenshots/form2.png)
+![Form Page 3](./src/assets/screenshots/form3.png)
 
-### `npm run build`
+From the All Horses page, **click** on a horse photo, and you will be taken to the horse `profile` page, which displays all available information, including contact info for owner, vet, and farrier. 
+From the profile, you can **click** the yellow `edit` icon to open a form and edit update information about this horse. You can also **click** the red `delete` icon, which will create an alert to make sure you want to delete the horse. 
+![Horse Profile](./src/assets/screenshots/profile.png)
+![Edit Horse Info](./src/assets/screenshots/edit.png)
+![Delete Horse Info](./src/assets/screenshots/delete.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Install
+-  Clone this [repo](https://github.com/Stall-Card-App/stall-card-fe) to your machine
+-  cd into the directory `stall-card-fe`
+-  Run `npm install`
+-  Run `npm start`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Wins
+- Working with a great backend team to build out our server.
+- Implementing GraphQL. 
+- Successfully uploading and storing images using Cloudinary.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Challenges
+- GraphQL posed some challenges, and wasn't fully necessary for the scale of the project. 
+- Finding a solution to image storage.
+- Navigating CORS issues between the FE and BE teams.
 
-### `npm run eject`
+## Additions
+### Future Iterations
+- Create barn login with location to retrieve correct weather.
+- Create employee view that does not have CRUD functionality.
+- Integrate a calendar and scheduling functionality.
+- Send text alerts to employees when a horse's information is updated.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contributors
+- [August Reid](https://github.com/augustreid)
+- [Eric Wang](https://github.com/ewang09)
+- [John Kiernan](https://github.com/jkiernan12)
+- [Stephanie Helm](https://github.com/stephaniemhelm)
+- [Jacob Yarborough](https://github.com/jacobyarborough)
