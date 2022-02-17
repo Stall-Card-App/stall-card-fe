@@ -15,6 +15,27 @@
     }
 }
 
+.destroy-button {
+    font-weight: bold;
+    font-size: 1.5em;
+    color: white;
+    background-color: red;
+    border: none;
+    position: fixed;
+    cursor: pointer;
+    right: 100px;
+    bottom: 25px;
+    margin: 1%;
+    border-radius: 5em;
+    padding: 0.75em;
+    line-height: .6em;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 200ms ease-in-out;
+    &:hover {
+      transform: translateY(-5px);
+    }
+}
+
 .horse-profile {
     @include v.flexbox(row, center, center);
     width: 100%;

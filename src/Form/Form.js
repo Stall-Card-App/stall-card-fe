@@ -1,6 +1,6 @@
 import './Form.scss';
 import MicroModal from 'micromodal';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ContactFormlet from '../ContactFormlet/ContactFormlet';
 import mockData from "../mockData";
 import { addHorseQuery, addFarrierQuery, addOwnerQuery, addVetQuery, fetchAllFarriers, fetchAllVets, fetchAllOwners, updateHorseQuery } from '../graphqlQueries.js';
@@ -14,6 +14,7 @@ import InputLabel from '@mui/material/InputLabel';
 function Form({currentHorse}) {
   const initialInputsState = currentHorse ? currentHorse : {
     name: '',
+    photo: '',
     stallNumber: 0,
     age: 0,
     breed: '',
@@ -31,9 +32,10 @@ function Form({currentHorse}) {
     farrierId: 0,
     barnId: 2
   };
-  
+
   const [inputs, setInputs] = useState(initialInputsState);
   const [formPage, setFormPage] = useState(1);
+  const [isComplete, setIsComplete] = useState(false);
 
   const [addHorse] = useMutation(addHorseQuery);
   const [updateHorse] = useMutation(updateHorseQuery);
@@ -47,6 +49,34 @@ function Form({currentHorse}) {
       newInputs[e.target.id] = e.target.value;
     }
     setInputs(newInputs);
+  }
+
+  useEffect(() => {
+    const isComplete = Object.values(inputs).every(input => input !== '' && input !== 0)
+    if (isComplete) {
+      setIsComplete(() => true)
+    } else {
+      setIsComplete(() => false)
+    }
+  }, [inputs])
+
+  const handleImageUpload = (e) => {
+    const image = e.target.files[0]
+    const photoFile = new FormData()
+    photoFile.append("file", image)
+    photoFile.append("upload_preset", "unsigned")
+    photoFile.append("cloud_name","careid")
+    fetch("https://api.cloudinary.com/v1_1/careid/image/upload",{
+      method:"post",
+      body: photoFile
+    })
+      .then(response => response.json())
+      .then(data => {
+        const newInputs = {...inputs};
+        newInputs.photo = data.url;
+        setInputs(() => newInputs)
+    })
+    .catch(err => console.log(err))
   }
 
   const handleSubmit = (e) => {
@@ -107,6 +137,17 @@ function Form({currentHorse}) {
                   value={inputs.name}
                   onChange={(e) => handleInputChange(e)}
                   size="small"
+                />
+              </div>
+              <div className="input-container image-input-container">
+                <label htmlFor="photo" className="image-label">Upload image</label>
+                <input
+                  type="file"
+                  label="Name"
+                  id="photo"
+                  // value={inputs.photo}
+                  onChange={(e) => handleImageUpload(e)}
+                  accept="image/png, image/jpeg"
                 />
               </div>
               <div className="input-container">
@@ -288,7 +329,7 @@ function Form({currentHorse}) {
               updateContactID={updateContactID}
                />
               <button className='back-button' onClick={(e) => handleBack(e)}>Back</button>
-              <button className='submit-button' onClick={(e) => handleSubmit(e)}>Submit</button>
+              <button className='submit-button' disabled={!isComplete} onClick={(e) => handleSubmit(e)}>Submit</button>
             </form>
           </div>
         </div>}

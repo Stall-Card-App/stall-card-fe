@@ -1,6 +1,5 @@
 {
   "name": "stall-card-fe",
-  "proxy": "https://aqueous-savannah-80171.herokuapp.com/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -20,14 +19,27 @@
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
     "sass": "^1.49.7",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "workbox-background-sync": "^6.4.2",
+    "workbox-broadcast-update": "^6.4.2",
+    "workbox-cacheable-response": "^6.4.2",
+    "workbox-core": "^6.4.2",
+    "workbox-expiration": "^6.4.2",
+    "workbox-google-analytics": "^6.4.2",
+    "workbox-navigation-preload": "^6.4.2",
+    "workbox-precaching": "^6.4.2",
+    "workbox-range-requests": "^6.4.2",
+    "workbox-routing": "^6.4.2",
+    "workbox-strategies": "^6.4.2",
+    "workbox-streams": "^6.4.2"
   },
   "scripts": {
     "build": "react-scripts build",
     "start": "react-scripts -r @cypress/instrument-cra start",
     "cy:run": "cypress run",
     "test": "start-server-and-test start http-get://localhost:3000 cy:run",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "coverage": "npx nyc report --reporter=text-summary"
   },
   "eslintConfig": {
     "extends": [
@@ -51,7 +63,16 @@
     "@cypress/code-coverage": "^3.9.12",
     "@cypress/instrument-cra": "^1.4.0",
     "cypress": "^9.4.1",
+    "cypress-file-upload": "^5.0.8",
     "nyc": "^15.1.0",
     "start-server-and-test": "^1.14.0"
+  },
+  "nyc": {
+    "include": "src",
+    "exclude": [
+      "src/reportWebVitals.js",
+      "src/service-worker.js",
+      "src/serviceWorkerRegistration.js"
+    ]
   }
 }

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./AllHorses.scss";
 import { Link } from 'react-router-dom';
-import mockData from "../mockData";
 import HorseCard from "../HorseCard/HorseCard";
 import Loading from "../Loading/Loading.js";
+import NotFound from "../NotFound/NotFound";
 import { fetchAllHorses } from '../graphqlQueries.js';
 import { useQuery } from '@apollo/client';
 import MicroModal from 'micromodal';
@@ -12,19 +12,21 @@ function AllHorses( { updateCurrentPage }) {
   MicroModal.init();
   const [allHorses, setAllHorses] = useState([])
 
-  const { data, loading, error } = useQuery(fetchAllHorses, {
+    const { data, loading, error } = useQuery(fetchAllHorses, {
     onCompleted: data => {
-      setAllHorses(() => data.fetchHorses)
+      let currHorses = [...data.fetchHorses]
+      setAllHorses(() => currHorses.sort((a, b) => a.stallNumber - b.stallNumber))
     }})
 
   return (
     <div className="horse-grid">
       {loading && <Loading />}
+      {error && <NotFound />}
       {allHorses?.length > 0 && allHorses.map((horse) => {
         return <HorseCard 
           id={horse.id}
-          photo={mockData.data.horses[1].photo}
           name={horse.name}
+          photo={horse.photo}
           stallNumber={horse.stallNumber}
           amFeed = {horse.amFeed}
           pmFeed = {horse.pmFeed}
@@ -37,7 +39,7 @@ function AllHorses( { updateCurrentPage }) {
         <i className="fas fa-plus"></i> Add Horse
       </button>
     </div>
-    )
+  )
 }
 
 export default AllHorses;

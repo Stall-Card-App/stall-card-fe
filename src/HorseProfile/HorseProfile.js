@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import mockData from "../mockData";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import "./HorseProfile.scss";
-import { fetchHorse, fetchVet, fetchFarrier, fetchOwner } from '../graphqlQueries.js'
-import { useQuery } from '@apollo/client';
+import { fetchHorse, fetchVet, fetchFarrier, fetchOwner, destroyHorseQuery, fetchAllHorses } from '../graphqlQueries.js'
+import { useQuery, useMutation } from '@apollo/client';
 import ContactDetails from "../ContactDetails/ContactDetails";
 import Form from "../Form/Form";
 import Loading from "../Loading/Loading";
@@ -17,16 +16,32 @@ function HorseProfile( { updateCurrentPage }) {
     vet: undefined,
     owner: undefined,
   })
+
   const horseId = Number(useParams().id);
+  const navigate = useNavigate();
 
   const {loading, error} = useQuery(fetchHorse, {
     variables: { id: horseId },
     onCompleted: data => {
       setHorse(() => data.fetchHorse);
-
     }
   })
 
+  const [destroyHorse] = useMutation(destroyHorseQuery, {
+    refetchQueries: [
+      fetchAllHorses, 
+      'fetchHorses' 
+    ],
+  });
+
+  const removeHorse = () => {
+    if (window.confirm('Are you sure you want to delete this horse?') === true) {
+      destroyHorse({
+        variables: {input: {id: Number(horseId)}}
+      })
+      navigate('/horses')
+    }
+  }
 
   useQuery(fetchFarrier, {
     variables: { id: horse.farrierId },
@@ -55,7 +70,10 @@ function HorseProfile( { updateCurrentPage }) {
       <button className='edit-horse-button' onClick={() => MicroModal.show('modal-1')}>
         <i class="fas fa-pencil-alt"></i>
       </button>
-        <img className="horse-photo" src={`${mockData.data.horses[1].photo}`} alt={`Photo of ${horse.name}`} />
+      <button className='destroy-button' onClick={() => removeHorse() }>
+        <i className="fas fa-trash"></i>
+      </button>
+        <img className="horse-photo" src={`${horse.photo}`} alt={`Photo of ${horse.name}`} />
         <section className="horse-details">
           <h3>{horse.name}</h3>
           <div className="info-tables">
