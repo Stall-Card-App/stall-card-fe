@@ -6,8 +6,10 @@ import HorseCard from "../HorseCard/HorseCard";
 import Loading from "../Loading/Loading.js";
 import { fetchAllHorses } from '../graphqlQueries.js';
 import { useQuery } from '@apollo/client';
+import MicroModal from 'micromodal';
 
-function AllHorses() {
+function AllHorses( { updateCurrentPage }) {
+  MicroModal.init();
   const [allHorses, setAllHorses] = useState([])
 
   const { data, loading, error } = useQuery(fetchAllHorses, {
@@ -27,9 +29,13 @@ function AllHorses() {
           amFeed = {horse.amFeed}
           pmFeed = {horse.pmFeed}
           turnout = {horse.turnout}
+          updateCurrentPage={updateCurrentPage}
         />
       })
       }
+      <button className='new-horse-button' onClick={() => MicroModal.show('modal-1')}>
+        <i className="fas fa-plus"></i> Add Horse
+      </button>
     </div>
     )
 }

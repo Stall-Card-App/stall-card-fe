@@ -12,6 +12,31 @@
         color: black;
     }
 }
+
+.new-horse-button {
+    font-weight: bold;
+    font-size: 1.5em;
+    color: white;
+    background-color: #d36135;
+    border: none;
+    position: absolute;
+    cursor: pointer;
+    right: 25px;
+    bottom: 25px;
+    margin: 1%;
+    border-radius: 5em;
+    padding: 0.75em;
+    line-height: .6em;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    transition: transform 200ms ease-in-out;
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
+  i {
+    width: 24px;
+  }
+
 @media screen and (min-width: 1540px) {
     .horse-grid {
         grid-template-columns: repeat(5, 1fr);
