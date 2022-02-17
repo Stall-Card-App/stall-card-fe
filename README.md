@@ -39,39 +39,39 @@ On the left side of the screen, or at the top on mobile view, there is a navigat
 ![All Horses](./src/assets/screenshots/horsesFull.png)
 ![All Horses Mobile View](./src/assets/screenshots/horsesMed.png)
 
-**Click** on a horse photo, and you will be taken to the horse `profile` page, which displays all available information, including contact info for owner, vet, and farrier. 
+From the All Horses page, you can **click** the yellow `Add New Horse` button in the bottom right. This will open a `form` to fill out with all the horse's information. The form includes a button to upload a photo. The form will take you through several pages to add all necessary information, and when adding contacts, you can either select one of the existing contacts or add a new one. Once you `click` submit, the horse will be added to your barn. 
+![Form Page 1](./src/assets/screenshots/form1.png)
+![Form Page 2](./src/assets/screenshots/form2.png)
+![Form Page 3](./src/assets/screenshots/form3.png)
+
+From the All Horses page, **click** on a horse photo, and you will be taken to the horse `profile` page, which displays all available information, including contact info for owner, vet, and farrier. 
 From the profile, you can **click** the yellow `edit` icon to open a form and edit update information about this horse. You can also **click** the red `delete` icon, which will create an alert to make sure you want to delete the horse. 
 ![Horse Profile](./src/assets/screenshots/profile.png)
 ![Edit Horse Info](./src/assets/screenshots/edit.png)
 ![Delete Horse Info](./src/assets/screenshots/delete.png)
 
-## Illustrations
-![Home Page](./src/assets/Home-page.png)
-![Classes](./src/assets/Classes.png)
-![Spell-details.png](./src/assets/Spell-details.png)
-![Spell-list](./src/assets/Spell-list.png)
-![Loading-gif](./src/assets/squiz.gif)
-
 ## Install
-
--  Clone this [repo](https://github.com/elisebeall/dnd-spells) to your machine
--  cd into the directory `dnd-spells`
+-  Clone this [repo](https://github.com/Stall-Card-App/stall-card-fe) to your machine
+-  cd into the directory `stall-card-fe`
 -  Run `npm install`
 -  Run `npm start`
 
 ## Wins
-- Researching Context Api and implementing it
-- Using Hooks to help manage state
+- Working with a great backend team to build out our server.
+- Implementing GraphQL. 
+- Successfully uploading and storing images using Cloudinary.
 
 ## Challenges
-- context api
-- Custom hooks
-- Building a React app of this size
+- GraphQL posed some challenges, and wasn't fully necessary for the scale of the project. 
+- Finding a solution to image storage.
+- Navigating CORS issues between the FE and BE teams.
 
 ## Additions
 ### Future Iterations
-- Add ability to create a character
-- Impliment ability to sort spells by level
+- Create barn login with location to retrieve correct weather.
+- Create employee view that does not have CRUD functionality.
+- Integrate a calendar and scheduling functionality.
+- Send text alerts to employees when a horse's information is updated.
 
 ## Contributors
 - [August Reid](https://github.com/augustreid)
