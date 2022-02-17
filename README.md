@@ -35,6 +35,16 @@ On the `Home` page, you will see a `weather widget` that displays the current we
 ![Home Dashboard](./src/assets/screenshots/dashFull.png)
 ![Dashboard Mobile View](./src/assets/screenshots/dashSmall.png)
 
+On the left side of the screen, or at the top on mobile view, there is a navigation `menu`. Select the `All Horses` option, and you will be taken to a page with all horses currently at the stable. The horses are displayed with a photo, name, stall number, and an accordian that reveals feeding details. 
+![All Horses](./src/assets/screenshots/horsesFull.png)
+![All Horses Mobile View](./src/assets/screenshots/horsesMed.png)
+
+**Click** on a horse photo, and you will be taken to the horse `profile` page, which displays all available information, including contact info for owner, vet, and farrier. 
+From the profile, you can **click** the yellow `edit` icon to open a form and edit update information about this horse. You can also **click** the red `delete` icon, which will create an alert to make sure you want to delete the horse. 
+![Horse Profile](./src/assets/screenshots/profile.png)
+![Edit Horse Info](./src/assets/screenshots/edit.png)
+![Delete Horse Info](./src/assets/screenshots/delete.png)
+
 ## Illustrations
 ![Home Page](./src/assets/Home-page.png)
 ![Classes](./src/assets/Classes.png)
