@@ -14,10 +14,18 @@
     margin-top: 12px;
     display: flex;
     img {
-        margin-bottom: 15px;
-        margin-right: 10px;
+        margin-bottom: 14px;
+        margin-right: 9px;
     }
+}
 
+.mobile-logo {
+    margin: 0px;
+    img {
+        
+    }
+    display: flex;
+    align-items: center;
 }
 
 .nav-items {
@@ -44,7 +52,7 @@
     font-weight: bold;
     font-size: 1.5em;
     color: white;
-    background-color: #d36135;
+    background-color: #e4b020;
     border: none;
     position: fixed;
     cursor: pointer;
