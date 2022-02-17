@@ -44,14 +44,12 @@
 
 .horse-photo {
     height: 70vh;
-    //margin: 3%;
     border-radius: 2%;
     box-shadow: 5px 5px 5px 3px v.$headerBackground;
 }
 
 .mobile-image {
   max-width: 50%;
-  //margin: 3%;
   border-radius: 2%;
   box-shadow: 5px 5px 5px 3px v.$headerBackground;
   min-width: 300px;
@@ -60,11 +58,9 @@
 }
 
 .horse-details {
-    // @include v.flexbox(column, space-around, center);
-    //min-width: 50%;
     height: 70vh;
     background-color: white;
-    border-radius: 2%;
+    border-radius: 10px;
     box-shadow: 5px 5px 5px 3px v.$headerBackground;
     overflow: scroll;
     padding-left: 2em;
@@ -78,23 +74,11 @@
 .info-tables {
     width: 100%;
     padding-left: 0em !important;
-    // table {
-    //     width: 60%;
-    // }
-    
-    // tbody {
-    //     @include v.flexbox(column, flex-start, space-between);
-    //     tr {
-    //         @include v.flexbox(row, 0, center);
-    //     }
-    // }
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     
-
-
     table {
         //padding-left: 0em;
         font-family: arial, sans-serif;
@@ -123,7 +107,8 @@
     margin-bottom: 2em;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1180px) {
+
   .horse-profile {
       display: flex;
       flex-direction: column;
@@ -132,6 +117,9 @@
   .horse-details {
     @include v.flexbox(column, space-around, center);
     height: auto;
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+    margin-bottom: 1.5em;
   }
 
   .horse-photo {
@@ -140,5 +128,29 @@
 
   .mobile-image {
     display: block;
+    margin-bottom: 1.5em;
+    box-shadow: none;
   }
+  .info-tables {
+    table {
+        max-width: 50%;
+    }
+}
+}
+
+@media screen and (max-width: 768px) {
+    .details-page {
+        margin-top: 0em;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .info-tables {
+        table {
+            min-width: 200px !important;
+        }
+    }
+    .mobile-image {
+        min-width: 200px;
+    }
 }
