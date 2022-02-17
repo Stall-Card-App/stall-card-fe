@@ -126,9 +126,11 @@ function HorseProfile( { updateCurrentPage }) {
             </table>
           <div className="all-contacts">
             <h3>Important Contacts:</h3>
+              <div className="contact-cards">
                 <ContactDetails query={fetchOwner} id={horse.ownerId} resName={'fetchOwner'} type="Owner" />
                 <ContactDetails query={fetchVet} id={horse.vetId} resName={'fetchVet'} type="Vet" />
                 <ContactDetails query={fetchFarrier} id={horse.farrierId} resName={'fetchFarrier'} type="Farrier" />
+              </div>
               </div>
             </div>
         </section>
