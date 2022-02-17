@@ -1,10 +1,11 @@
-# Squizard's Spells
+# Stall Card
 
-### Mod3 Group Stretch Tech Project
+### Turing Mod 4 Capstone Project
 
 ## Table of Contents
 - [Abstract](#Abstract)
 - [Technologies](#Technologies)
+- [Experience](#Experience)
 - [Illustrations](#Illustrations)
 - [Install](#Install)
 - [Wins](#Wins)
@@ -13,15 +14,26 @@
 - [Contributors](#Contributors)
 
 ## Abstract
-Squizard's Spells is an app that allows its users to filter through Dungeons and Dragons 5th Edition spells and save those spells in a personal spellbook. Spells saved will persist on page load as well. When a user reaches the site, they will be able to look at their personal spellbook or browse spells. Then they can choose the character class that they are playing to narrow it down to spells that that class can use. Players can then click on spells to get the full details or bookmark them to save them to their spellbook.
+Stall Card is a progressive web app created to solve the challenges of running a large-scale horse boarding barn. Horses have very individualized care needs. These needs often change with the horse's age, health, weather, etc. Barn's with many horses and multiple employees often struggle to keep everyone up to date with these changes, and to train new employees who aren't yet familiar with every animal. 
+
+Stall Card addresses these challenges with an app designed for the barn manager. The user can add, edit, and delete a profile for each horse, which includes biographical details, feeding instructions, and important contacts. 
 
 ## Technologies
 -  HTML
--  CSS
+-  CSS / SASS
 -  JavaScript
 -  React
--  Context Api
 -  Hooks
+- GraphQL / Apollo
+- Cloudinary
+- PWA
+- Cypress
+- Circle CI
+
+## Experience
+On the `Home` page, you will see a `weather widget` that displays the current weather and a forecast for the next 8 hours. You will also see a daily `schedule` that includes employee shifts, riding lessons, and appointments, and an `overview` of the number of horses on property. 
+![Home Dashboard](./src/assets/screenshots/dashFull.png)
+![Dashboard Mobile View](./src/assets/screenshots/dashSmall.png)
 
 ## Illustrations
 ![Home Page](./src/assets/Home-page.png)
