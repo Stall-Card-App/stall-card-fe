@@ -1,8 +1,10 @@
 .weather-widget-container {
   grid-column: 1 / 3;  
+  display: flex;
 }
 
 .weather-widget {
+  //height: 100%;
   border: 1px solid #d3d3d3;
   // width: 90%;
   display: flex;
