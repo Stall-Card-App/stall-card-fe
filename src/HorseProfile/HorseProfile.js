@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import mockData from "../mockData";
 import "./HorseProfile.scss";
 import { fetchHorse, fetchVet, fetchFarrier, fetchOwner, destroyHorseQuery, fetchAllHorses } from '../graphqlQueries.js'
 import { useQuery, useMutation } from '@apollo/client';
